@@ -1,0 +1,256 @@
+page-hotel-list{    
+    .pq-filterBar {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: rem(48);
+        background-color: #fff;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid #ededed;
+        z-index: 1000;
+
+        .pq-filter-item{
+            width: 42%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pq-filter-item:last-child{
+            width: 16%;
+
+            img{
+                height: 60%;
+                width: width;
+            }
+        }
+
+        ion-icon{
+            margin-left: 8px;
+            font-size: rem(22);
+        }
+
+        [border-right]{
+            border-right: 1px solid #efefef;
+        }
+    }
+
+    #mask{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background-color: #000;
+        opacity: .7;
+        z-index: 998;
+    } 
+
+    .filterModal{
+        position: absolute; 
+        transform: translateY(-5rem);
+        padding-top: rem(48);
+        z-index: 999;
+        width: 100%;
+        background-color: #fff;
+
+        .hotel-filter{
+            .pq-check-btn{
+                width: 100%;
+                overflow: hidden;
+                padding: 0 rem(18);
+                margin-top: rem(18);
+            }
+        }
+
+        .hotel-sort{
+
+            ul{
+                li{
+                    width: 100%;
+                    height: rem(40);
+                    padding-left: rem(12);
+                    line-height: rem(40);
+                    border-bottom: 1px solid #ededed;
+                }
+            }
+        }
+    }
+
+    .pq-hotel-item{
+        width: 100%;
+        overflow: hidden;
+        display: none;
+        z-index: 997;
+    }
+
+    .first-item{
+        margin-top: rem(48);
+    }
+    .hotelEmpty{
+        margin-top: rem(48);
+        font-size: rem(14);
+        text-align: center;
+        padding: rem(10) 0;
+    }
+
+    .type-0{
+        .pq-hotel-img{
+            position: relative;
+
+            img{
+                width: 100%;
+                height: auto;
+            }
+
+            .pq-hotel-tipsbar{
+                position: absolute;
+                bottom: rem(30);
+                width: 100%;
+                height: rem(30);
+
+                .pq-hotel-tips{
+                    position: absolute;
+                    right: 0;
+                    width: rem(120);
+                    height: 0;
+                    // border-bottom: rem(30) solid #ffc800;
+                    border-bottom-width: rem(30);
+                    border-bottom-style: solid;
+                    border-left: rem(20) solid transparent;
+                    opacity: 0.7;
+                    
+                    span{
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: rem(30);
+                        align-items: center;
+                        justify-content: center;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .pq-hotel-info{
+            width: 100%;
+            overflow: hidden;
+            padding: rem(14) rem(8);
+            border-bottom: 1px solid #ededed; 
+
+            >div{
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .pq-hotel-info-main{
+                justify-content: space-between;
+                font-size: rem(12);
+
+                .pq-hotel-info-name{
+                    justify-content: flex-start;
+                    padding-bottom: rem(8);
+
+                    [bold]{
+                        font-weight: 600;
+                    }
+
+                    span{
+                        padding-right: rem(10);
+                    }
+                }
+            }
+
+            .pq-hotel-info-address{
+                justify-content: flex-start;
+            
+                img{
+                    width: auto;
+                    height: rem(16);
+                }
+
+                [small]{
+                    font-size: rem(10);
+                    //margin-left: 8px; 
+                }
+            }
+        }
+    }
+
+    .type-1{
+        position: relative;
+        padding: rem(12) rem(12) rem(12) rem(110);
+        height: rem(114);
+        border-bottom: 1px solid #ededed;
+
+        >img{
+            width: rem(90);
+            height: rem(90);
+            position: absolute;
+            top: rem(12);
+            left: rem(12);
+            border-radius: 5px;
+        }
+
+        .pq-hotel-info{
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            justify-content: space-between;
+
+            div{
+                width: 100%;
+            }
+
+            .pq-hotel-name{
+                font-size: rem(14);
+                font-weight: 600;
+            }
+
+            .pq-hotel-des{
+                font-size: rem(12);
+                color: #888;
+                img{
+                    height: rem(12);
+                    width: auto;
+                    margin: 2px;
+                }
+            }
+
+            .pq-hotel-address{
+                font-size: rem(10);
+                color: #888;
+                span{
+                    width: 100%;
+                    height: 100%;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                }
+            }
+        }
+
+        .pq-hotel-price{
+            width: rem(100);
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: rem(12);
+
+            em{
+                font-size: rem(22);
+                color: #ffc800;
+                margin-right: rem(4);
+            }
+        }
+    }
+
+    .pq-show{
+        display: block;
+    }
+}

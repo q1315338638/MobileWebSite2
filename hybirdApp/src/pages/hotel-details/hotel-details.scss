@@ -1,0 +1,146 @@
+page-hotel-details {
+	ion-navbar {
+		ion-buttons {
+			position: relative;
+			z-index: 10000;
+			padding: rem(5) rem(12);
+			margin: 0;
+		}
+	}
+
+	.pq-hotel-details {
+		overflow: hidden;
+		padding: 0 rem(12);
+		font-size: rem(12);
+		padding-bottom: rem(16);
+
+		> div {
+			width: 100%;
+			overflow: hidden;
+		}
+
+		> div:not(:last-child) {
+			border-bottom: 1px solid #dddddd;
+		}
+
+		.pq-basic-information {
+			padding-bottom: rem(12);
+		}
+
+		h2 {
+			line-height: rem(40);
+			font-size: rem(14);
+			color: #ffc800;
+		}
+
+		.pq-info-box {
+			width: 100%;
+			overflow: hidden;
+
+			li {
+				line-height: rem(24);
+			}
+
+			.pq-info-key {
+				width: 100%;
+				color: #ffc800;
+				font-size: rem(12);
+
+				b {
+					font-size: rem(10);
+				}
+			}
+
+			.pq-info-value {
+				margin-left: 4%;
+				width: 92%;
+				font-size: rem(12);
+			}
+		}
+
+		.pq-aroud-traffic {
+			.pq-info-box {
+				li {
+					padding: rem(8) 0;
+
+					&:first-child {
+						padding: rem(8) 0 0 0;
+					}
+				}
+			}
+
+			.pq-info-box:not(:last-child) {
+				.pq-info-value {
+					border-bottom: 1px solid #dddddd;
+				}
+			}
+		}
+
+		.pq-hotel-facilities {
+			.pq-info-box {
+				li {
+					list-style: disc;
+					padding: 0.2rem 0;
+				}
+
+				.pq-info-value {
+					flex-wrap: wrap;
+
+					.pq-info-value-item {
+						width: 25%;
+						text-align: center;
+						padding: rem(6);
+						word-wrap: break-word;
+						word-break: normal;
+						
+						&:nth-child(4n+5){
+							position:relative;
+							&:before{
+								content:"";
+								position:absolute;
+								left:0;
+								top:rem(-3);
+								width:400%;
+								height:1px;
+								background:#f5f5f5;
+							}
+						}
+						img {
+							height: rem(16);
+							width: auto;
+							margin-right: 3px;
+						}
+
+						span {
+							display: block;
+						}
+					}
+				}
+			}
+
+			.pq-info-box:not(:last-child) {
+				.pq-info-value {
+					border-bottom: 1px solid #dddddd;
+				}
+			}
+		}
+
+		.pq-hotel-profile {
+			div {
+				p {
+					text-indent: 2em;
+					line-height: rem(22);
+				}
+			}
+
+			.pq-info-box {
+				margin-bottom: rem(8);
+
+				.pq-info-value-item {
+					float: left;
+					width: 50%;
+				}
+			}
+		}
+	}
+}

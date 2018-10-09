@@ -1,0 +1,134 @@
+
+<ion-header *ngIf="m_objContextService.m_isWeiXin" class="{{m_objThemeService.colorTheme()}}">
+  <ion-navbar>
+    <ion-title>订单详情</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="{{m_objThemeService.colorTheme()}} pq-bg-light-gray">
+    <div class="page">
+        <div class="order_info">
+            <ul class="book_info_list">
+                <li class="flex_box info_title">
+                    订单信息
+                </li>
+                <li class="flex_box info_li">
+                    <span class="info_key">入住酒店</span>
+                    <span class="info_value">{{m_objOrderDetails.ChainName}}</span>
+                </li>
+                <li class="flex_box info_li">
+                    <div class="flex_box">
+                        <span class="info_key">入住房型</span>
+                        <span class="info_value">{{m_objOrderDetails.RoomTypeName}}</span>
+                    </div>
+                    <div class="flex_box">
+                        <span class="info_key">房间数量</span>
+                        <span class="info_value">{{m_objOrderDetails.RoomCount}}</span>
+                    </div>
+                </li>
+                <li class="flex_box info_li">
+                    <div class="flex_box">
+                        <span class="info_key">入住日期</span>
+                        <span class="info_value">{{m_objOrderDetails.ArrAccDate.toString().replace("T00:00:00","")}}</span>
+                    </div>
+                    <div class="flex_box">
+                        <span class="info_key">离店日期</span>
+                        <span class="info_value">{{m_objOrderDetails.DepAccDate.toString().replace("T00:00:00","")}}</span>
+                    </div>
+                </li>
+            </ul>
+            <ul class="personal_info_list">
+                <li class="flex_box info_li">
+                    <div class="flex_box">
+                        <span class="info_key">入住人</span>
+                        <span class="info_value">{{m_objOrderDetails.ContractName}}</span>
+                    </div>
+                    <div class="flex_box">
+                        <span class="info_key">联系方式</span>
+                        <span class="info_value">{{m_objOrderDetails.Mobile}}</span>
+                    </div>
+                </li>
+                <li class="flex_box info_li">
+                    <span class="info_key">备注</span>
+                    <span class="info_value">{{m_objOrderDetails.Remark}}</span>
+                </li>
+            </ul>
+            <ul class="order_info_list">
+                <li class="flex_box info_li">
+                    <div class="flex_box">
+                        <span class="info_key">订单编号</span>
+                        <span class="info_value">{{m_objOrderDetails.FolioID}}</span>
+                    </div>
+                    <div class="flex_box">
+                        <span class="info_key">订单状态</span>
+                        <span class="info_value">{{parseStateText(m_objOrderDetails.FolioState, m_objOrderDetails.PayTransState)}}</span>
+                    </div>
+                </li>
+                <li class="flex_box info_li">
+                    <span class="info_key">预定时间</span>
+                    <span class="info_value">{{m_objOrderDetails.CreateTime.replace("T"," ")}}</span>
+                </li>
+            </ul>
+			<ul class="pay_info_list">
+				<!-- <li class="flex_box info_li isShow">
+					<span class="info_key">支付类型</span>
+					<span class="info_value"></span>
+				</li> -->
+				<li class="flex_box info_li">
+					<span class="info_key">订单总价</span>
+					<span class="info_value">{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}{{m_objOrderDetails.RoomRate * m_objOrderDetails.NightCount * m_objOrderDetails.RoomCount | number:'0.2-2'}}</span>
+				</li>
+				<!-- <li class="flex_box info_li isShow">
+					<span class="info_key">优惠券</span>
+					<span class="info_value"></span>
+				</li> -->
+							<!-- <li class="flex_box info_li isShow">
+					<span class="info_key">使用储值</span>
+					<span class="info_value"></span>
+				</li> -->
+							<!-- <li class="flex_box info_li isShow">
+					<span class="info_key">实付金额</span>
+					<span class="info_value"></span>
+				</li> -->
+				<li class="flex_box info_li">
+					<span class="info_key">支付状态</span>
+					<span class="info_value">{{m_sPayState}}</span>
+				</li>
+			</ul>
+			<ul class="hotel_info_list">
+				<li class="info_li">
+					<span>酒店地址</span>
+					<span>{{m_objOrderDetails.ChainAddr}}</span>
+				</li>
+				<li class="info_li">
+					<span>酒店电话</span>
+					<span>{{m_objOrderDetails.ChainTel}}</span>
+				</li>
+
+				<li class="font-theme-color">
+					<p class="buttons pq-flex">
+						<!--<span class="pq-flex" (click)="goMap()">
+							<i class="iconfont">&#xe61e;</i>
+							<small>查看地图</small>
+						</span>-->
+						<!--<span class="pq-flex" (click)="sendEmail()">
+							<i class="iconfont">&#xe604;</i>
+							<small>订单发送到邮箱</small>
+						</span>-->
+						<span class="pq-flex" (click)="callPhone()">
+							<i class="iconfont">&#xe62c;</i>
+							<small>联系酒店</small>
+						</span>
+					</p>
+				</li>
+			</ul>
+        </div>
+        <div class="payBox" *ngIf="m_bCancelAndPayBox">
+            <div class="cancelBtn cancel flex_box" (click)="orderCancle(m_objOrderDetails.ChainID,m_objOrderDetails.FolioID)">取消订单</div>
+            <div class="payBtn flex_box background" (click)="goPay()">去支付</div>
+        </div>
+        <div class="cancelBox cancel" *ngIf="m_bCancelOrder" (click)="orderCancle(m_objOrderDetails.ChainID,m_objOrderDetails.FolioID)">
+            取消订单
+        </div>
+    </div>
+</ion-content>

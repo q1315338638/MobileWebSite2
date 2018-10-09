@@ -1,0 +1,299 @@
+member-center {
+	//padding-bottom: rem(48);
+	.fixed-content {
+		margin-top: 0 !important;
+	}
+
+	.scroll-content {
+		margin-top: 0 !important;
+	}
+
+	.button-ios, .button-md {
+		height: rem(32);
+	}
+
+	.card-img-bg {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 30%;
+	}
+
+	.button-box {
+		height: 70%;
+		position: relative;
+		top: 30%;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		margin: auto;
+	}
+
+	.card-img {
+		height: rem(223);
+		position: relative;
+		overflow: hidden;
+
+		.card-box {
+			position: relative;
+			width: rem(271);
+			height: rem(174);
+			margin: rem(25) auto;
+			overflow: hidden;
+			font-size: rem(12);
+			border-radius: 12px;
+			box-shadow: 2px 2px 5px #999;
+
+			.card-number {
+				position: absolute;
+				left: rem(24);
+				bottom: rem(16);
+				color: #fff;
+			}
+
+			& > img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: inherit;
+				height: inherit;
+				z-index: 0;
+			}
+
+			.card-info {
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				margin: auto;
+				color: #fff;
+				width: 90%;
+				height: 88%;
+				text-align: center;
+
+				& > img {
+					float: left;
+					width: rem(80);
+					height: rem(26);
+				}
+
+				.title {
+					clear: both;
+					margin-top: rem(36);
+					font-size: rem(30);
+				}
+
+				.title-en {
+					font-size: rem(18);
+					margin-top: 5px;
+				}
+
+				.slogan {
+					margin-top: rem(12);
+					font-size: rem(10);
+				}
+
+				.member-info {
+					margin-top: rem(12);
+					font-size: rem(10);
+
+					span[float-right] {
+						span {
+							margin-left: rem(8);
+						}
+					}
+				}
+			}
+		}
+
+		.login-button {
+			font-size: rem(16);
+			width: rem(168);
+			height: rem(45);
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			margin: auto;
+
+			em {
+				margin: 0 rem(5);
+			}
+		}
+	}
+
+	.perfonal_info {
+		width: 100%;
+		overflow: hidden;
+		padding-bottom: rem(108);
+	}
+
+	.flex_box {
+		display: -webkit-flex; /* Safari */
+		display: flex;
+		align-items: center;
+	}
+
+	.info_top {
+		width: 100%;
+		height: 1.875rem;
+		padding: 0.21875rem 0;
+		justify-content: space-around;
+		background-color: #ededed;
+	}
+
+	.info_top li {
+		width: 33.33%;
+		height: 100%;
+		text-align: center;
+		float: left;
+		background-color: #fff;
+		justify-content: center;
+
+		&:last-child {
+			span {
+				position: relative;
+
+				i {
+					position: absolute;
+					top: rem(-3);
+					right: rem(-15);
+					background: red;
+					color: #fff;
+					padding: rem(1) rem(4);
+					font-size: rem(12);
+					border-radius: 20px;
+					font-style: normal;
+				}
+			}
+		}
+	}
+
+	.info_top li a {
+		width: 100%;
+		height: 100%;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.info_top li a p {
+		margin-top: 4px;
+	}
+
+	.info_top li a span {
+		font-size: 0.4375rem;
+	}
+
+	.info_bottom {
+		width: 100%;
+		overflow: hidden;
+		background-color: #fff;
+		padding: 0.75rem 0;
+	}
+
+	.info_bottom_ul {
+		width: 8.5rem;
+		overflow: hidden;
+		margin: 0 auto;
+		flex-wrap: wrap;
+	}
+
+	.info_bottom_ul li {
+		width: 50%;
+		height: 2.4375rem;
+		justify-content: center;
+		align-items: flex-end !important;
+		padding-top: 0.25rem;
+	}
+
+	.borderRight {
+		border-right: 1px solid #efefef;
+	}
+
+	.borderBottom {
+		border-bottom: 1px solid #efefef;
+	}
+
+	.info_bottom_ul li a {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.info_bottom_ul li div {
+		overflow: hidden;
+		text-align: center;
+		color: #808080;
+	}
+
+	.info_bottom_ul li img {
+		height: 1.25rem;
+		width: auto;
+		padding-bottom: 0.25rem;
+	}
+
+	.loginBtnBox {
+		width: 100%;
+		overflow: hidden;
+		margin-top: 0.5rem;
+		padding: 0 0.5rem;
+		text-align: center;
+	}
+
+	.loginBtn {
+		width: 100%;
+		height: 1.1875rem;
+		background-color: #6a1684;
+		color: #fff;
+		line-height: 1.1875rem;
+		border-radius: 5px;
+	}
+
+	a {
+		color: $labelColor;
+	}
+
+	ion-icon[name=settings] {
+		font-size: rem(24);
+	}
+
+	.features-list {
+		background: #fff;
+		overflow: hidden;
+
+		ul {
+			li {
+				color: #888;
+				height: rem(39);
+				line-height: rem(39);
+				border-bottom: 1px solid #e2e2e2;
+
+				img {
+					margin: rem(5) rem(15) 0 rem(5);
+					height: rem(28);
+					float: left;
+				}
+
+				i {
+					margin: 0 rem(15) 0 rem(9);
+					height: rem(28);
+					float: left;
+					font-size: rem(24);
+				}
+
+				span {
+					float: right;
+					margin-right: 6px;
+				}
+
+				&:last-child {
+					border-bottom: none;
+				}
+			}
+		}
+	}
+}

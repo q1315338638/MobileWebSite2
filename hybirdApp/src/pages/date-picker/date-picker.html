@@ -1,0 +1,8 @@
+<ion-header *ngIf="m_objContextService.m_isWeiXin">
+    <ion-navbar>
+        <ion-title>请选择入住离店日期</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <my-date [maxDate]="30"></my-date>
+</ion-content>

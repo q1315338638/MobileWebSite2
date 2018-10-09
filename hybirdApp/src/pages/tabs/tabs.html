@@ -1,0 +1,33 @@
+<!-- <ion-header *ngIf="m_objContextService.m_bIsIosApp" style="opacity:0;position:relative;">
+	<ion-navbar></ion-navbar>
+</ion-header>
+<div class="tabs {{m_objThemeService.colorTheme()}}">
+	<ul [ngSwitch]="m_objContextService.m_nShowTabs" class="components">
+		<li *ngSwitchCase="'0'">
+			<home></home>
+		</li>
+		<li *ngSwitchCase="'1'">
+			<order></order>
+		</li>
+		<li *ngSwitchCase="'2'">
+			<member-center></member-center>
+		</li>
+	</ul>
+	<ul class="tabs-buttons">
+		<li (click)="changeTabs(0)" [ngClass]="{'font-theme-color':m_objContextService.m_nShowTabs == 0}">
+			<i class="iconfont">{{m_objContextService.m_nShowTabs == 0 ? "&#xe702;" : "&#xe703;"}}</i>
+			<p>首页</p>
+		</li>
+		<li (click)="changeTabs(1)" [ngClass]="{'font-theme-color':m_objContextService.m_nShowTabs == 1}">
+			<i class="iconfont">{{m_objContextService.m_nShowTabs == 1 ? "&#xe713;" : "&#xe714;"}}</i>
+			<p>预订</p>
+		</li>
+		<li (click)="changeTabs(2)" [ngClass]="{'font-theme-color':m_objContextService.m_nShowTabs == 2}">
+			<i class="iconfont">{{m_objContextService.m_nShowTabs == 2 ? "&#xe715;" : "&#xe716;"}}</i>
+			<p>我的账户</p>
+		</li>
+	</ul>
+</div> -->
+<ion-tabs id="anTabs">
+  <ion-tab *ngFor="let list of tabs" [root]="list.root" tabTitle={{list.title}} tabIcon={{list.icon}}></ion-tab>
+</ion-tabs>

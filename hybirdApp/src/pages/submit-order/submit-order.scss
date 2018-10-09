@@ -1,0 +1,155 @@
+page-submit-order {
+	.date-and-address {
+		p {
+			align-items: center;
+			justify-content: flex-start;
+			position: relative;
+			padding: rem(4) 0;
+
+			img {
+				height: rem(14);
+				width: auto;
+			}
+
+			b {
+				width: 2.5rem;
+				text-align: center;
+			}
+
+			em {
+				position: absolute;
+				top: 0;
+				right: 0;
+				height: 100%;
+				color: #ffc800;
+				align-items: center;
+				justify-content: flex-end;
+			}
+		}
+	}
+
+	.roomTypeName {
+		border-bottom: 1px solid #ededed;
+
+		ion-label {
+			padding-left: rem(18);
+		}
+
+		ion-icon {
+			min-height: 0;
+			font-size: rem(22);
+		}
+
+		ion-note {
+			color: #000;
+		}
+	}
+
+	[text-center] {
+		text-align: center;
+	}
+
+	.list-ios .item-block {
+		&:first-child {
+			border-bottom: 0;
+		}
+
+		.item-inner {
+			border-bottom: 1px solid #ededed;
+		}
+	}
+
+	.item-input .label-md {
+		color: #000;
+	}
+
+	.list-ios,
+	.list-md {
+		margin: 0;
+	}
+
+	[must] {
+		font-size: rem(20);
+		color: #f00;
+		margin-right: 4px;
+		position: relative;
+		top: 5px;
+	}
+
+	.checkInItem {
+		background-color: #fff;
+		justify-content: space-between;
+		border-bottom: 1px solid #ededed;
+		position: relative;
+		padding-left: 114px;
+		line-height: rem(44);
+
+		div:first-child {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding-left: 16px;
+			min-width: 2rem;
+			height: rem(88);
+			margin-right: 16px;
+			line-height: rem(88);
+		}
+
+		div:last-child {
+			width: 100%;
+			flex-direction: column;
+
+			ion-input {
+				width: 100%;
+				height: rem(44);
+				margin: 0;
+
+				input {
+					margin: 0;
+				}
+			}
+
+			ion-input:not(:last-child) {
+				border-bottom: 1px solid #ededed;
+			}
+		}
+	}
+
+	.book-description {
+		font-size: 0.3rem;
+
+		p {
+			margin-top: 0.1rem;
+			color: #666;
+		}
+	}
+
+	ion-label {
+		min-width: 2rem;
+	}
+
+	ion-input {
+		color: #909090;
+	}
+
+	.addMeb {
+		align-items: center;
+		justify-content: center;
+		font-size: rem(14);
+
+		ion-icon {
+			margin-right: 6px;
+		}
+	}
+
+	ion-footer .item-ios.item-block .item-inner, .item-md.item-block .item-inner {
+		padding: 0;
+	}
+
+	.toolbar-ios, .toolbar-md {
+		b {
+			color: red;
+			font-size: 0.5rem;
+		}
+	}
+}

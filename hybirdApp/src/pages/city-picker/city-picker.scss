@@ -1,0 +1,84 @@
+.pq-bgc-light-gray{
+    background-color: #ededed;
+
+    .pq-cityPicker-main{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 94%;
+        padding: rem(8);
+
+        ion-list,
+        ion-item-group{
+            padding: 8px;
+        }
+
+        .item-md-light,
+        .item-divider-md-light,
+        .item-ios-light,
+        .item-divider-ios-light{
+            background-color: #ddd;
+        }
+
+        ion-item-group{
+            padding: 4px 8px;
+        }
+
+        .current-city{
+            div{
+                height: 100%;
+            }
+        }
+    }
+
+    .pq-cityPicker-slide{
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 7%;
+        height: 100%;
+        padding-top: rem(44);
+        background-color: #fff;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        p{
+            width: 100%;
+            padding: rem(2) 0;
+            justify-content: center;
+        }
+    }
+
+    .item-block{
+        min-height: 0;
+    }
+
+    .item-ios [item-end],
+    .item-md [item-end]{
+        min-height: rem(20);
+        font-size: rem(20);
+    }
+}
+.pq-cityPicker-toast{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 8px;
+    width: rem(70);
+    height: rem(70);
+    background-color: rgba($color: #000, $alpha: 0.7);
+    z-index: 1000;
+    text-align: center;
+    line-height: rem(70);
+    color: #fff;
+    font-size: rem(50);
+}
+
+.isShow{
+    display: block;
+}

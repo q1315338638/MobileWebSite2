@@ -1,0 +1,25 @@
+<ion-header *ngIf="m_objContextService.m_isWeiXin">
+    <ion-navbar>
+        <ion-title></ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="{{m_objThemeService.colorTheme()}} pq-bg-light-white">
+    <h1 padding>输入手机号码</h1>
+    <ion-list>
+        <ion-item padding-right class="pq-item-ios pq-border-top-no">
+            <ion-label fixed>手机号</ion-label>
+            <ion-input type="tel" clearInput="true" [(ngModel)]="m_objMsg.sMobile" name="mobile" (keyup)="verificationMobile()" placeholder="请输入手机号码" maxlength="11"></ion-input>
+        </ion-item>
+        <ion-item padding-right class="pq-item-ios pq-border-top-no">
+            <ion-label>验证码</ion-label>
+            <ion-input type="tel" clearInput="true" [(ngModel)]="m_objMsg.sCode" name="mobile" (keyup)="verificationCode()" placeholder="请输入验证码" maxlength="4"></ion-input>
+            <button ion-button  item-end class="pq-mr-no pq-min-width background" (click)="getVerificationCode()" [disabled]="m_bSMSButton">
+                {{m_sSMSText}}
+            </button>
+        </ion-item>
+        <div padding>
+            <button ion-button class="background" *ngIf="!m_bIsShowLoginButton" block (click)="goGetMsg()" [disabled]="m_bNext">下一步</button>
+            <button ion-button class="background" *ngIf="m_bIsShowLoginButton" block (click)="msgLogin()" [disabled]="m_bNext">登录</button>
+        </div>
+    </ion-list>
+</ion-content>

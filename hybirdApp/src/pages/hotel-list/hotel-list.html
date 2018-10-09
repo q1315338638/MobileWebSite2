@@ -1,0 +1,86 @@
+<ion-header color="m_objThemeService.colorTheme()" *ngIf="m_objContextService.m_isWeiXin">
+    <ion-navbar>
+        <ion-title>{{m_objContextService.m_objCompanyInfo.ProductName}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <!-- filter导航栏 -->
+    <div class="pq-filterBar pq-flex {{m_objThemeService.colorTheme()}} pq-bg-light-white">
+        <div class="pq-filter-item pq-flex" border-right (click)="openHotelFilter(0)">
+            <span>重新筛选</span>
+            <ion-icon name="md-arrow-dropdown" color="{{m_objThemeService.colorTheme()}}" [@triRotage]="m_objHotelInfoService.m_sActived"></ion-icon>
+        </div>
+        <div class="pq-filter-item pq-flex" border-right (click)="openHotelFilter(1)">
+            <span>综合排序</span>
+            <ion-icon name="md-arrow-dropdown" color="{{m_objThemeService.colorTheme()}}" [@triRotage]="m_objHotelInfoService.m_sPriceActive"></ion-icon>
+        </div>
+        <div class="pq-filter-item pq-flex">
+            <img src="assets/theme/{{m_objThemeService.imgTheme()}}/img-list.png" alt="" *ngIf="m_nDisplayType==1" (click)="changeShowType()">
+            <img src="assets/theme/{{m_objThemeService.imgTheme()}}/txt-list.png" alt="" *ngIf="m_nDisplayType==2" (click)="changeShowType()">
+        </div>
+    </div>
+    <div id="mask" (click)="closeModal()" [@mask]="m_objHotelInfoService.m_sFilterModalState"></div>
+    <div class="filterModal" [@filterModal]="m_objHotelInfoService.m_sFilterModalState">
+        <div class="hotel-filter" *ngIf="m_nFilterModalType==0">
+            <my-hotelfilter></my-hotelfilter>
+            <div class="pq-check-btn">
+                <button ion-button block color="{{m_objThemeService.colorTheme()}}" (click)="search()">{{'查询'}}</button>
+            </div>
+        </div>
+        <div class="hotel-sort" *ngIf="m_nFilterModalType==1">
+            <ul>
+                <li *ngFor="let item of m_lsFilterTypeList" (click)="hotelListSort(item.nTypeId)" [ngClass]="{'font-theme-color':m_nSortTypeSelectedId==item.nTypeId}">{{item.sTypeName}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="hotelEmpty font-theme-color" *ngIf="m_objHotelInfoService.m_IsEmpty">
+        您所在的城市暂时没有我们的酒店
+    </div>
+    <div class="hotelEmpty font-theme-color" *ngIf="m_objHotelInfoService.m_bPriceEmpty">
+        您所选的价格区间暂无适合的酒店
+    </div>
+    <div class="pq-hotel-item type-0" [ngClass]="{'pq-show':m_nDisplayType==1,'first-item':i==0}" *ngFor="let item of m_objHotelInfoService.m_objHotelInfo; let i = index" (click)="goHotelDetails(item.Chain.ChainID)">
+        <div class="pq-hotel-img">
+            <img src="assets/imgs/hotel-1.png" alt="">
+            <div class="pq-hotel-tipsbar">
+                <div class="pq-hotel-tips border-bottom-color">
+                    <span class="pq-inline-flex">{{item.MinRate}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="pq-hotel-info">
+            <div class="pq-hotel-info-main pq-flex">
+                <div class="pq-hotel-info-name pq-flex font-theme-color">
+                    <span bold>{{item.Chain.BrandName}}-<em>{{item.Chain.ChainName}}</em></span><span></span>
+                </div>
+                <div class="pq-hotel-info-count"></div>
+            </div>
+            <div class="pq-hotel-info-address pq-flex">
+				<i class="iconfont">&#xe61e;</i>
+				<span small>{{item.Chain.ChainAddress}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="pq-hotel-item type-1" [ngClass]="{'pq-show':m_nDisplayType==2,'first-item':i==0}" *ngFor="let item of m_objHotelInfoService.m_objHotelInfo; let i = index" (click)="goHotelDetails(item.Chain.ChainID)">
+        <img src="assets/imgs/hotel-1.png" alt="">
+        <div class="pq-hotel-info pq-flex">
+            <div class="pq-hotel-name font-theme-color">
+                <span>{{item.Chain.BrandName}} | {{item.Chain.ChainName}}</span>
+            </div>
+            <div class="pq-hotel-des">{{item.CommentCount}}条评论/{{(item.CommentScore/20) | number:'1.2-2'}}分</div>
+            <div class="pq-hotel-des">
+                <img src="{{m_sUrl + 'Images/MobileChainRoomService/' + ele.CodeID + '.png'}}" alt="" *ngFor="let ele of item.AttachedInfo.ChainAttachedList">
+            </div>
+            <div class="pq-hotel-address">
+                <span>{{item.Chain.ChainAddress}}</span>
+            </div>
+        </div>
+        <div class="pq-hotel-price pq-flex">
+            <em class="font-color">{{item.MinRate}}</em>
+        </div>
+    </div>
+    <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite($event))">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

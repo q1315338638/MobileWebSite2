@@ -1,0 +1,70 @@
+
+<ion-header *ngIf="m_objContextService.m_isWeiXin" class="{{m_objThemeService.colorTheme()}}">
+  <ion-navbar>
+    <ion-title>会员资料</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="{{m_objThemeService.colorTheme()}} pq-bg-light-gray">
+	<form id="MebInfoForm" enctype="multipart/form-data" name="from">
+		<input type="file" name="img" id="choseImage" accept="image/*" style="display:none;" />
+		<ul>
+			<li class="flex_box info_li" relative>
+				<span>头像</span>
+				<span class="inline_flex_box">
+					<img id="imgbox" [src]="m_sImgUrl" />
+					<input type="file" (change)="uploadMebHeadImg($event)" name="photo" class="updata-button" accept="image/*" />
+				</span>
+			</li>
+			<li class="info_li" (click)="changeMebName()">
+				<div>姓名</div>
+				<div>
+					<input type="text" value="" id="MebName" readonly="readonly" placeholder="{{m_objPersonMember.MebName}}" />
+					<i></i>
+				</div>
+			</li>
+			<li class="info_li">
+				<div>手机号码</div>
+				<div>
+					<input type="text" value="" id="phoneNum" readonly="readonly" placeholder="{{m_objPersonMember.Mobile}}" />
+					<i></i>
+				</div>
+			</li>
+			<li class="info_li">
+				<div>邮箱</div>
+				<div>
+					<input type="text" value="" id="phoneNum" readonly="readonly" placeholder="{{m_objPersonMember.EMail}}" />
+					<i></i>
+				</div>
+			</li>
+			<li class="info_li" (click)="ChooseSex()">
+				<div>性别</div>
+				<div id="sexBox">
+					<input type="text" value="" id="sex" readonly="readonly" placeholder="{{m_objPersonMember.SexName}}" />
+					<i></i>
+				</div>
+			</li>
+			<li class="info_li">
+				<div>证件号码</div>
+				<div>
+					<input type="text" value="" id="idNum" readonly="readonly" placeholder="{{m_objPersonMember.DocNo}}" />
+					<i></i>
+				</div>
+			</li>
+			<li class="info_li">
+				<div>生日</div>
+				<div>
+					<input type="text" value="" id="Birthday" readonly="readonly" placeholder="{{m_objPersonMember.Birthday.toString().replace('T00:00:00','')}}" />
+					<i></i>
+				</div>
+			</li>
+			<!--<li class="info_li">
+		<div>常用城市</div>
+		<div>
+			<input type="text" value="" id="Address" readonly="readonly" placeholder="{{m_objPersonMember.StayPlaceID}}" />
+			<i></i>
+		</div>
+	</li>-->
+		</ul>
+	</form>
+</ion-content>

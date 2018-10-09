@@ -1,0 +1,18 @@
+<div class="pq-date-week-title pq-flex {{m_objThemeService.colorTheme()}}">
+    <span class="pq-date-week-item pq-inline-flex" *ngFor="let item of m_lsWeekList; let i = index" [ngClass]="{'font-theme-color':i==0||i==6}">
+        {{item}}
+    </span>
+</div>
+<div class="pq-date-content {{m_objThemeService.colorTheme()}}">
+    <div class="pq-date-item" *ngFor="let item of m_lsDayList">
+        <div class="pq-date-mon pq-flex">{{item.currentYearAndMon}}</div>
+        <div class="pq-date-day pq-flex">
+            <span class="pq-inline-flex " 
+                *ngFor="let day of item.dayList let i = index" 
+                [ngClass]="{'pq-canSelected':day.dayCode >= minDayCode&&day.dayCode<=maxDayCode,'pq-date-selected':day.selected,'pq-date-between-selected':day.betweenSelected}"
+                (click)="selected(day.dayCode,day.monIndex,i)">
+                {{day.day}}<em *ngIf="day.checkInState">入住</em><em *ngIf="day.checkOutState">离店</em>
+            </span>
+        </div>
+    </div>
+</div>

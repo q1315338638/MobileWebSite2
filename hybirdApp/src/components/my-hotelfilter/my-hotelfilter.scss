@@ -1,0 +1,168 @@
+my-hotelfilter {
+	padding-bottom:rem(108);
+	.pq-checkbox {
+		width: 100%;
+		overflow: hidden;
+		padding: 0 rem(37.5);
+		background-color: #fff;
+		.rent {
+			span{
+				position: absolute;
+			}
+			span:first-child{
+				left:0;
+			}
+			span:last-child{
+				right:0;
+				a{
+					display:block;
+					width:rem(20);
+					height:rem(20);
+					border:2px solid #e2e2e2;
+					border-radius: 3px;
+				}
+			}
+		}
+		> div {
+			width: 100%;
+			height: rem(52);
+			position: relative;
+		}
+
+		.pq-location {
+			align-items: center;
+			justify-content: space-between;
+			border-bottom: 1px solid #000;
+			position: relative;
+
+			.pq-inline-flex {
+				width: 40%;
+				height: 100%;
+				align-items: center;
+			}
+
+			.pq-select-city {
+				justify-content: flex-start;
+			}
+
+			.pq-arrow-right {
+				width: rem(22);
+				margin: auto;
+
+				img {
+					margin: auto;
+				}
+			}
+
+			.pq-location-city {
+				justify-content: flex-end;
+				align-items: center;
+			}
+
+			.pq-select-city img {
+				margin-right: rem(15);
+			}
+
+			.pq-location-city ion-icon {
+				font-size: rem(20);
+				margin-right: rem(10);
+			}
+
+			img {
+				height: rem(15);
+				width: auto;
+			}
+		}
+
+		> div:not(:first-child) {
+			padding: 0 rem(30);
+
+			.pq-pos-abs {
+				position: absolute;
+				top: 0;
+				width: rem(30);
+				height: 100%;
+				align-items: center;
+
+				img {
+					width: auto;
+					height: rem(18);
+				}
+			}
+
+			div:first-child {
+				left: 0;
+				justify-content: flex-start;
+			}
+
+			div:last-child {
+				right: 0;
+				justify-content: flex-end;
+			}
+
+			.pq-dp-content {
+				width: 100%;
+				height: 100%;
+				border-bottom: 1px solid #ddd;
+				align-items: center;
+				justify-content: space-between;
+
+				.pq-dp-content-main {
+					align-items: center;
+					justify-content: center;
+
+					> div:first-child {
+						justify-content: flex-end;
+					}
+
+					.pq-datePicker-split {
+						width: 16px;
+						height: 1px;
+						padding: 0 6px;
+						background-color: #000;
+					}
+
+					> div:last-child {
+						justify-content: flex-start;
+					}
+
+					.pq-dp-content-main-date {
+						align-items: center;
+
+						.pq-inline-flex {
+							flex-direction: column;
+						}
+
+						span {
+							padding: 0 rem(6);
+							justify-content: center;
+							align-items: center;
+						}
+
+						.pq-date-day {
+							font-size: rem(24);
+							font-weight: 500;
+						}
+					}
+				}
+			}
+		}
+
+		.pq-searchBox {
+			border-bottom: 1px solid #000;
+
+			.pq-searchBox-main {
+				width: 100%;
+				height: 100%;
+
+				input {
+					width: 100%;
+					height: 100%;
+					border: 0;
+					outline: 0;
+					padding-left: rem(15);
+				}
+			}
+		}
+	}
+}

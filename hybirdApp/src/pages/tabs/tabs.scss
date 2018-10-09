@@ -1,0 +1,41 @@
+page-tabs {
+	#anTabs {
+		a{
+			ion-icon {
+				font-family:"iconfont" !important;
+				font-size:rem(28);
+				font-style:normal;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			  }
+		  
+			  .ion-md-icon-ic_index:before { content: "\e703"; }
+			  .ion-md-icon-ic_index[ng-reflect-is-active=true]:before{ content: "\e702"; }
+			  .ion-md-icon-ic_index-outline:before { content: "\e703"; }
+			  .ion-md-icon-ic_index-outline[ng-reflect-is-active=true]:before{ content: "\e702"; }
+			  .ion-ios-icon-ic_index:before { content: "\e703"; }
+			  .ion-ios-icon-ic_index[ng-reflect-is-active=true]:before{ content: "\e702"; }
+			  .ion-ios-icon-ic_index-outline:before { content: "\e703"; }
+			  .ion-ios-icon-ic_index-outline[ng-reflect-is-active=true]:before{ content: "\e702"; }
+		  
+			  .ion-md-icon-ic_book:before { content: "\e714"; }
+			  .ion-md-icon-ic_book[ng-reflect-is-active=true]:before{ content: "\e713"; }
+			  .ion-md-icon-ic_book-outline:before { content: "\e714"; }
+			  .ion-md-icon-ic_book-outline[ng-reflect-is-active=true]:before{ content: "\e713"; }
+			  .ion-ios-icon-ic_book:before { content: "\e714"; }
+			  .ion-ios-icon-ic_book[ng-reflect-is-active=true]:before{ content: "\e713"; }
+			  .ion-ios-icon-ic_book-outline:before { content: "\e714"; }
+			  .ion-ios-icon-ic_book-outline[ng-reflect-is-active=true]:before{ content: "\e713"; }
+		  
+			  .ion-md-icon-ic_me:before { content: "\e716"; }
+			  .ion-md-icon-ic_me[ng-reflect-is-active=true]:before{ content: "\e715"; }
+			  .ion-md-icon-ic_me-outline:before { content: "\e716"; }
+			  .ion-md-icon-ic_me-outline[ng-reflect-is-active=true]:before{ content: "\e715"; }
+			  .ion-ios-icon-ic_me:before { content: "\e716"; }
+			  .ion-ios-icon-ic_me[ng-reflect-is-active=true]:before{ content: "\e715"; }
+			  .ion-ios-icon-ic_me-outline:before { content: "\e716"; }
+			  .ion-ios-icon-ic_me-outline[ng-reflect-is-active=true]:before{ content: "\e715"; }
+		}
+	
+	  }
+}

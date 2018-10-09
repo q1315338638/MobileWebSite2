@@ -1,0 +1,107 @@
+<ion-header class="{{m_objThemeService.colorTheme()}}">
+	<ion-navbar *ngIf="m_objContextServive.m_isWeiXin">
+		<ion-title>评论详情</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content class="{{m_objThemeService.colorTheme()}} pq-bg-light-gray">
+	<div class="page">
+		<nav>
+			<ul class="nav-bar">
+				<li class="all_comment" [class.selected]="m_bCommentSelected" (click)="chooseTabs(0)">全部</li>
+				<li class="photo_comment" [class.selected]="!m_bCommentSelected" (click)="chooseTabs(1)">晒图</li>
+			</ul>
+		</nav>
+		<div *ngIf="m_bCommentSelected">
+			<ul class="content">
+				<li class="comment_box flex_box" *ngFor="let list of m_lsHotelCommentAll">
+					<div class="title flex_box">
+						<div class="title_left flex_box">
+							<img src="{{list.ImgUrl}}" alt=" ">
+							<div class="nameAndTime inline_flex_box">
+								<em class="font-color">{{list.MebName}}</em>
+								<div class="title-star">
+									打分
+									<div class="star-box font-theme-color">
+										<div class="star-top" [ngStyle]="{'width':list.StarNumber + '%'}">
+											<i class="iconfont">&#xe60a;</i>
+											<i class="iconfont">&#xe60a;</i>
+											<i class="iconfont">&#xe60a;</i>
+											<i class="iconfont">&#xe60a;</i>
+											<i class="iconfont">&#xe60a;</i>
+										</div>
+										<div class="star-bottom">
+											<i class="iconfont">&#xe60a;</i>
+											<i class="iconfont">&#xe60a;</i>
+											<i class="iconfont">&#xe60a;</i>
+											<i class="iconfont">&#xe60a;</i>
+											<i class="iconfont">&#xe60a;</i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<p class="comment-text">{{list.Comment}}</p>
+					<div *ngIf="list.CommentImg" class="comment_img flex_box">
+						<img *ngIf="list.CommentImg" src="{{list.CommentImg}}" (click)="showBigImg(list.CommentImg)" />
+					</div>
+					<p class="comment-time">
+						<small>{{list.CreateTime}}发表</small>
+					</p>
+				</li>
+			</ul>
+			<p class="pq-empty-show" *ngIf="!m_bHotelCommentAllHaveMoreData">暂无更多记录</p>
+			<ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite(0))" *ngIf="m_bHotelCommentAllHaveMoreData">
+				<ion-infinite-scroll-content></ion-infinite-scroll-content>
+			</ion-infinite-scroll>
+		</div>
+		<div *ngIf="!m_bCommentSelected">
+			<ul class="content">
+				<li class="comment_box flex_box" *ngFor="let list of m_lsHotelComment">
+					<div class="title flex_box">
+						<div class="title_left flex_box">
+							<img src="{{list.ImgUrl}}" alt=" ">
+							<div class="nameAndTime inline_flex_box">
+								<em class="font-color">{{list.MebName}}</em>
+								<div class="title-star">
+									打分
+									<div class="star-box font-color">
+										<div class="star-top" [ngStyle]="{'width':list.StarNumber + '%'}">
+											<i class="iconfont">&#xe60a;</i>
+											<i class="iconfont">&#xe60a;</i>
+											<i class="iconfont">&#xe60a;</i>
+											<i class="iconfont">&#xe60a;</i>
+											<i class="iconfont">&#xe60a;</i>
+										</div>
+										<div class="star-bottom">
+											<i class="iconfont">&#xe60a;</i>
+											<i class="iconfont">&#xe60a;</i>
+											<i class="iconfont">&#xe60a;</i>
+											<i class="iconfont">&#xe60a;</i>
+											<i class="iconfont">&#xe60a;</i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<p class="comment-text">{{list.Comment}}</p>
+					<div *ngIf="list.CommentImg" class="comment_img flex_box">
+						<img *ngIf="list.CommentImg" src="{{list.CommentImg}}" (click)="showBigImg(list.CommentImg)" />
+					</div>
+					<p class="comment-time">
+						<small>{{list.CreateTime}}发表</small>
+					</p>
+				</li>
+			</ul>
+			<p class="pq-empty-show" *ngIf="!m_bHotelCommentHaveMoreData">暂无更多记录</p>
+			<ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite(1))" *ngIf="m_bHotelCommentHaveMoreData">
+				<ion-infinite-scroll-content></ion-infinite-scroll-content>
+			</ion-infinite-scroll>
+		</div>
+	</div>
+</ion-content>
+<div *ngIf="m_bShowBigImg" (click)="hideBigImg()">
+	<div class="show-big-img-bg"></div>
+	<img src="{{m_sShowBigImgSrc}}" class="show-big-img" />
+</div>

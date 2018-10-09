@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\components",
+    "\\components\\order",
+    "\\config",
+    "\\pages",
+    "\\pages\\modal-room-details"
+  ],
+  "SelectedNode": "\\config\\apiurl.ts",
+  "PreviewInSolutionExplorer": false
+}

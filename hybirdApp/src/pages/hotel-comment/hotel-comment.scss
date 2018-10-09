@@ -1,0 +1,167 @@
+page-hotel-comment {
+
+	nav, .nav-bar, .content, .title {
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.nav-bar li {
+		width: 50% !important;
+		height: 1rem;
+		background-color: #fff;
+		float: left;
+		text-align: center;
+		line-height: 1rem;
+	}
+
+	.selected {
+		border-bottom: 2px solid #6a1684;
+	}
+
+	.content li {
+		width: 100%;
+		overflow: hidden;
+		padding: rem(12) 0.5rem;
+		background-color: #fff;
+		border-bottom: 1px solid #eeeeee;
+	}
+
+	.flex_box {
+		display: flex;
+		display: -webkit-flex;
+		align-items: center;
+	}
+
+	.comment_box {
+		flex-direction: column;
+
+		.title {
+			align-items: center;
+			justify-content: space-between;
+			overflow: hidden;
+		}
+
+		.comment-text {
+			margin-top:rem(10);
+		}
+		.comment-time {
+			margin-top: rem(18);
+		}
+	}
+
+	.title_left img {
+		width: 1rem;
+		height: 1rem;
+		margin-right: 0.3rem;
+	}
+
+	.inline_flex_box {
+		display: inline-flex;
+		display: -webkit-inline-flex;
+		align-items: center;
+	}
+
+	.nameAndTime {
+		height: 1rem;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-start;
+	}
+
+	.nameAndTime small {
+		font-size: 0.25rem;
+	}
+
+	.title-star {
+
+		.star-box {
+			display: inline-block;
+			position: relative;
+			color: #6a1684;
+
+			.star-top {
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1;
+				white-space: nowrap;
+				overflow: hidden;
+				font-size: 0;
+			}
+
+			.star-bottom {
+				font-size: 0;
+
+				.iconfont {
+					color: #e5e5e5 !important;
+				}
+			}
+
+			.iconfont {
+				font-size: .22rem;
+				margin: 0 .03rem;
+			}
+		}
+	}
+
+	.comment_box p {
+		width: 100%;
+	}
+
+	.comment_img {
+		width: 100%;
+		flex-wrap: wrap;
+		margin-top: 10px;
+	}
+
+	.comment_img img {
+		width: 2rem;
+		height: 2rem;
+		margin: 0 2px 2px 0;
+	}
+
+	.bigImg {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0,0,0,.7);
+		z-index: 999;
+		display: none;
+	}
+
+	.bigImg img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		margin: auto;
+		width: 100%;
+		height: auto;
+		z-index: 1000;
+	}
+
+	.show-big-img-bg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		z-index: 10;
+		background: #666;
+	}
+
+	.show-big-img {
+		position: absolute;
+		z-index: 11;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		margin: auto;
+		width: 100%;
+		height: auto;
+	}
+}

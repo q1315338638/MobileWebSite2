@@ -1,0 +1,159 @@
+
+<ion-header class="{{m_objThemeService.colorTheme()}}" relative [ngClass]="{'header-mt':m_objContextService.m_bIsIosApp}">
+	<ion-navbar>
+		<ion-title>我的账户</ion-title>
+		<ion-buttons end>
+			<button ion-button clear (click)="goSetting()">
+				<ion-icon name="settings"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content class="pq-bg-light-gray {{m_objThemeService.colorTheme()}}">
+	<div class="card-img pq-bg-light-white">
+		<div *ngIf="m_objContextService.isLogin()" class="card-box">
+			<img src="assets/theme/{{m_objThemeService.imgTheme()}}/member-card-bg.png" />
+			<!--<div class="card-info">
+				<p class="title">会员卡</p>
+				<p class="title-en">HOTEL VIP</p>
+				<img src="{{m_objContextService.m_objCompanyInfo.Logo}}" />
+				<img src="assets/theme/{{m_objThemeService.imgTheme()}}/member-logo.png" />
+				<p class="slogan">你的舒适，就是我的舒适</p>
+				<p class="member-info">
+					<span float-left>铂金会员卡</span>
+					<span float-right>18866660000<span>周杰伦先生</span></span>
+				</p>
+			</div>-->
+			<span class="card-number">{{m_objMemberInfo.CardNo}}</span>
+		</div>
+		<img *ngIf="!m_objContextService.isLogin()" class="card-img-bg" src="assets/theme/{{m_objThemeService.imgTheme()}}/member-center-login-bg.png" />
+		<div class="button-box">
+			<button *ngIf="!m_objContextService.isLogin()" ion-button class="login-button color-white background" (click)="goLogin()">登陆<em>/</em>注册</button>
+		</div>
+	</div>
+	<div class="perfonal_info">
+		<ul class="info_top">
+			<li (click)="m_objContextService.isLogin() ? goDeposit() : return">
+				<a href="javascript:;" class="flex_box">
+					<span>
+						<em id="storeSumBalance">{{m_objContextService.isLogin() ? m_objStoreValueSummary.SumBalance : 0}}</em>
+						元
+					</span>
+					<p>储值金额</p>
+				</a>
+			</li>
+			<li (click)="m_objContextService.isLogin() ? goPoints() : return">
+				<a href="javascript:;" class="flex_box">
+					<span>
+						<em id="points">{{m_objContextService.isLogin() ? m_objPointGatherInfo.PointResidueSum : 0}}</em>
+					</span>
+					<p>积分</p>
+				</a>
+			</li>
+			<li (click)="m_objContextService.isLogin() ? goCoupon() : return">
+				<a href="javascript:;" class="flex_box">
+					<span>
+						<em id="RowCount">
+							{{m_objContextService.isLogin() ? m_nCouponsNumber : 0}}
+						</em>
+						张
+						<i *ngIf="m_nEndCoupon>0">{{m_nEndCoupon}}</i>
+					</span>
+					<p>优惠券</p>
+				</a>
+			</li>
+		</ul>
+		<div class="features-list" padding-left padding-right>
+			<ul>
+				<li *ngIf="m_lsFunctionList[0]" (click)="m_objContextService.isLogin() ? goOrder() : return">
+					<img src="assets/imgs/my-order.png" />
+					<em>全部订单</em>
+					<span class="iconfont">&#xe636;</span>
+				</li>
+				<li *ngIf="m_lsFunctionList[1]" (click)="m_objContextService.isLogin() ? goMemberInfo() : return">
+					<img src="assets/imgs/info.png" />
+					<em>完善资料</em>
+					<span class="iconfont">&#xe636;</span>
+				</li>
+				<li *ngIf="m_lsFunctionList[2]" (click)="m_objContextService.isLogin() ? goChangePassword() : return">
+					<img src="assets/imgs/change-psw.png" />
+					<em>修改密码</em>
+					<span class="iconfont">&#xe636;</span>
+				</li>
+				<li *ngIf="m_lsFunctionList[3]" (click)="m_objContextService.isLogin() ? goAway() : return">
+					<img src="assets/imgs/out-order.png" />
+					<em>离店订单</em>
+					<span class="iconfont">&#xe636;</span>
+				</li>
+				<li *ngIf="m_lsFunctionList[4]" (click)="m_objContextService.isLogin() ? goBill() : return">
+					<i class="iconfont">&#xe66d;</i>
+					<em>账单</em>
+					<span class="iconfont">&#xe636;</span>
+				</li>
+				<li *ngIf="m_lsFunctionList[5]" (click)="m_objContextService.isLogin() ? goService() : return">
+					<i class="iconfont">&#xe7e1;</i>
+					<em>服务</em>
+					<span class="iconfont">&#xe636;</span>
+				</li>
+				<li *ngIf="m_lsFunctionList[6]" (click)="m_objContextService.isLogin() ? goSuggestions() : return">
+					<i class="iconfont">&#xe60b;</i>
+					<em>投诉与建议</em>
+					<span class="iconfont">&#xe636;</span>
+				</li>
+				<li *ngIf="m_lsFunctionList[7]" (click)="m_objContextService.isLogin() ? goDeposit() : return">
+					<i class="iconfont">&#xe600;</i>
+					<em>储值</em>
+					<span class="iconfont">&#xe636;</span>
+				</li>
+				<li *ngIf="m_lsFunctionList[8]" (click)="m_objContextService.isLogin() ? goPoints() : return">
+					<i class="iconfont">&#xe619;</i>
+					<em>积分</em>
+					<span class="iconfont">&#xe636;</span>
+				</li>
+				<li *ngIf="m_lsFunctionList[9]" (click)="m_objContextService.isLogin() ? goCoupon() : return">
+					<i class="iconfont">&#xe612;</i>
+					<em>优惠券</em>
+					<span class="iconfont">&#xe636;</span>
+				</li>
+			</ul>
+		</div>
+		<!--<div class="info_bottom">
+			<ul class="info_bottom_ul flex_box">
+				<li class="borderRight borderBottom flex_box" (click)="m_objContextService.isLogin() ? goOrder() : return">
+					<a href="javascript:;">
+						<div>
+							<img src="assets/theme/{{m_objThemeService.imgTheme()}}/my-order.png" alt="">
+							<p>全部订单</p>
+						</div>
+					</a>
+				</li>
+				<li class=" borderBottom flex_box" id="personalInfo" (click)="m_objContextService.isLogin() ? goMemberInfo() : return">
+					<a href="javascript:;">
+						<div>
+							<img src="assets/theme/{{m_objThemeService.imgTheme()}}/info.png" alt="">
+							<p>完善资料</p>
+						</div>
+					</a>
+				</li>
+				<li class="borderRight flex_box" (click)="m_objContextService.isLogin() ? goChangePassword() : return">
+					<a href="javascript:;">
+						<div>
+							<img src="assets/theme/{{m_objThemeService.imgTheme()}}/change-psw.png" alt="">
+							<p>修改密码</p>
+						</div>
+					</a>
+				</li>
+				<li class="flex_box" (click)="m_objContextService.isLogin() ? goAway() : return">
+					<a href="javascript:;">
+						<div>
+							<img src="assets/theme/{{m_objThemeService.imgTheme()}}/out-order.png" alt="">
+							<p>离店订单</p>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>-->
+	</div>
+</ion-content>

@@ -1,0 +1,95 @@
+
+<ion-header *ngIf="m_objContextService.m_isWeiXin" class="{{m_objThemeService.colorTheme()}}">
+  <ion-navbar>
+    <ion-title>会员储值</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="{{m_objThemeService.colorTheme()}} pq-bg-light-white">
+    <div class="content">
+        <ul class="deposit_type">
+            <li class="deposit_type_item selected" (click)="changeTabs(0)" [class.selected]="m_bShowTabsStyle[0]">储值</li>
+            <li class="deposit_type_item" (click)="changeTabs(1)" [class.selected]="m_bShowTabsStyle[1]">储值赠送</li>
+        </ul>
+        <div [ngSwitch]="m_nShowTabs">
+            <div *ngSwitchCase="'0'">
+                <ul class="deposit_title">
+                    <li class="deposit_title_key">
+                        <ul>
+                            <li class="li-3">储值总额</li>
+                            <li class="li-3">消费总额</li>
+                            <li class="li-3">可用总额</li>
+                        </ul>
+                    </li>
+                    <li class="deposit_title_value">
+                        <ul>
+                            <li class="li-3">{{m_objStoreValueSummary.SumAddAmount | number:'0.2-2'}}</li>
+                            <li class="li-3">{{m_objStoreValueSummary.SumUsedAmount | number:'0.2-2'}}</li>
+                            <li class="li-3">{{m_objStoreValueSummary.SumBalance | number:'0.2-2'}}</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="deposit_list">
+                    <li class="deposit_item" *ngFor="let list of m_lsStoreValueList.DataSet">
+                        <ul>
+                            <li class="deposit_item_title">
+                                <span>交易类型：<em>{{list.DebOrCre==1?"消费":"充值"}}</em></span>
+                                <span>交易方式：<em>{{list.PayMethodName}}</em></span>
+                                <span>储值金额：<em>{{(list.AddAmount==0?list.UsedAmount:list.AddAmount) | number:'0.2-2'}}</em></span>
+                            </li>
+                            <li class="deposit_item_info">
+                                <span>消费酒店：<em>{{list.ChainName}}</em></span>
+                                <span>时间：<em>{{(list.CreateTime.replace('T', " ")).substring(0, list.CreateTime.length - 3)}}</em></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="empty_show" *ngIf="m_nStoreValueHaveMoreData">暂无更多记录</p>
+                <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())" *ngIf="!m_nStoreValueHaveMoreData">
+                    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+                </ion-infinite-scroll>
+            </div>
+            <div *ngSwitchCase="'1'">
+                <ul class="deposit_title">
+                    <li class="deposit_title_key">
+                        <ul>
+                            <li class="li-4">赠送总额</li>
+                            <li class="li-4">消费总额</li>
+                            <li class="li-4">过期总额</li>
+                            <li class="li-4">可用总额</li>
+                        </ul>
+                    </li>
+                    <li class="deposit_title_value">
+                        <ul>
+                            <li class="li-4">{{m_objPresentStoreValueSummary.SumPresentAmount | number:'0.2-2'}}</li>
+                            <li class="li-4">{{m_objPresentStoreValueSummary.SumUsedAmount | number:'0.2-2'}}</li>
+                            <li class="li-4">{{m_objPresentStoreValueSummary.SumExpireAmount | number:'0.2-2'}}</li>
+                            <li class="li-4">{{m_objPresentStoreValueSummary.SumEnableAmount | number:'0.2-2'}}</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="deposit_list">
+                    <li class="deposit_item" *ngFor="let list of m_lsPresentStoreValueList.DataSet">
+                        <ul>
+                            <li class="deposit_item_title">
+                                <!--<span>交易类型：<em>5</em></span>-->
+                                <span>充值金额：<em>{{list.Amount | number:'0.2-2'}}</em></span>
+                                <span>赠送金额：<em>{{list.ResidualAmount | number:'0.2-2'}}</em></span>
+                            </li>
+                            <li class="deposit_item_info">
+                                <!--<span>交易方式：<em></em></span>-->
+                                <span>充值酒店：<em>{{list.ChainName}}</em></span>
+                                <span>时间：<em>{{(list.CreateTime.replace('T', " ")).substring(0, list.CreateTime.length - 3)}}</em></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="empty_show" *ngIf="m_nPresentStoreValueHaveMoreData">暂无更多记录</p>
+                <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfiniteForPresentStoreValue())" *ngIf="!m_nPresentStoreValueHaveMoreData">
+                    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+                </ion-infinite-scroll>
+            </div>
+        </div>
+    </div>
+</ion-content>

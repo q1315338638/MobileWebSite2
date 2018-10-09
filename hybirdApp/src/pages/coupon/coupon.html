@@ -1,0 +1,85 @@
+<ion-header *ngIf="m_objContextService.m_isWeiXin" class="{{m_objThemeService.colorTheme()}}">
+    <ion-navbar>
+        <ion-title>优惠券</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="pq-bg-light-gray {{m_objThemeService.colorTheme()}}">
+    <div class="choose-tabs-button pq-bg-light-white">
+        <ul>
+            <li (click)="changeTabs(0)" [class.selected]="m_lsChooseTabsButton[0]">
+                <span>有效</span>
+            </li>
+            <li (click)="changeTabs(1)" [class.selected]="m_lsChooseTabsButton[1]">
+                <span>已使用</span>
+            </li>
+            <li (click)="changeTabs(2)" [class.selected]="m_lsChooseTabsButton[2]">
+                <span>已失效</span>
+            </li>
+        </ul>
+    </div>
+    <div [ngSwitch]="m_sChooseTabs" class="tabs-box">
+		<div *ngSwitchCase="'0'">
+			<ul no-lines>
+				<li relative *ngFor="let list of m_lsPublishedVoucherList">
+					<img src="../../assets/theme/{{m_objThemeService.imgTheme()}}/coupon-bg-use.png" />
+					<span class="dscounted-price">立减<b>{{list.Value}}</b>元</span>
+					<div>
+						<p>{{list.Code}}</p>
+						<span>
+							<b><i>{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}</i>{{list.Value}}</b>
+						</span>
+						<p>有效期至&nbsp;{{list.EndDate}}</p>
+					</div>
+					<span class="dscounted-type">现金券</span>
+				</li>
+			</ul>
+			<p *ngIf="!m_bLoadingMore" class="coupon-no">暂无优惠券</p>
+			<ion-infinite-scroll *ngIf="m_bLoadingMore" (ionInfinite)="$event.waitFor(loadingMore(1))">
+				<ion-infinite-scroll-content></ion-infinite-scroll-content>
+			</ion-infinite-scroll>
+		</div>
+
+		<div *ngSwitchCase="1">
+			<ul>
+				<li relative *ngFor="let list of m_lsUsedVoucherList">
+					<img src="../../assets/theme/{{m_objThemeService.imgTheme()}}/coupon-bg-gray.png" />
+					<span class="dscounted-price">立减<b>{{list.Value}}</b>元</span>
+					<div>
+						<p>{{list.Code}}</p>
+						<span>
+							<b><i>{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}</i>{{list.Value}}</b>
+						</span>
+						<p>&nbsp;</p>
+					</div>
+					<span class="dscounted-type">现金券</span>
+				</li>
+			</ul>
+			<p *ngIf="!m_bLoadingMoreUsed" class="coupon-no">暂无优惠券</p>
+			<ion-infinite-scroll *ngIf="m_bLoadingMoreUsed" (ionInfinite)="$event.waitFor(loadingMore(2))">
+				<ion-infinite-scroll-content></ion-infinite-scroll-content>
+			</ion-infinite-scroll>
+		</div>
+
+		<div *ngSwitchCase="2">
+			<ul>
+				<li relative *ngFor="let list of m_lsVainVoucherList">
+					<img src="../../assets/theme/{{m_objThemeService.imgTheme()}}/coupon-bg-gray.png" />
+					<span class="dscounted-price">立减<b>{{list.Value}}</b>元</span>
+					<div>
+						<p>{{list.Code}}</p>
+						<span>
+							<b><i>{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}</i>{{list.Value}}</b>
+						</span>
+						<p>&nbsp;</p>
+					</div>
+					<span class="dscounted-type">现金券</span>
+				</li>
+			</ul>
+			<p *ngIf="!m_bLoadingMore" class="coupon-no">暂无优惠券</p>
+			<ion-infinite-scroll *ngIf="m_bLoadingMore" (ionInfinite)="$event.waitFor(loadingMore(1))">
+				<ion-infinite-scroll-content></ion-infinite-scroll-content>
+			</ion-infinite-scroll>
+		</div>
+    </div>
+</ion-content>

@@ -1,0 +1,37 @@
+<ion-header class="pq-backgroundColor" relative [ngClass]="{'header-mt':m_objContextService.m_bIsIosApp}"> 
+	<ion-navbar>
+		<div class="pq-navbar">
+			<img src="{{m_objContextService.m_objCompanyInfo.Logo}}" alt="">
+		</div>
+		<ion-title text-center>{{m_objContextService.m_objCompanyInfo.ProductName}}</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content class="{{m_objThemeService.colorTheme()}} pq-bg-light-white">
+	<div class="pq-slide-bar">
+		<ion-slides pager loop="true" autoplay="3000" speed="500">
+			<ion-slide>
+				<img src="assets/imgs/slide-img/banner1.png" alt="">
+			</ion-slide>
+			<ion-slide>
+				<img src="assets/imgs/slide-img/banner2.png" alt="">
+			</ion-slide>
+			<ion-slide>
+				<img src="assets/imgs/slide-img/banner3.png" alt="">
+			</ion-slide>
+		</ion-slides>
+	</div>
+	<div class="pq-nav">
+		<my-hotelfilter></my-hotelfilter>
+		<div class="pq-check-btn">
+			<button ion-button block class="background" (click)="goHotelList()">{{'查询[ChaXun]' | i18n}}</button>
+		</div>
+		<div *ngIf="m_lsFunction[0]" class="pq-brandbar pq-flex">
+			<span class="pq-inline-flex pq-border-none border-color">{{'龙华'}}<em></em>{{'红山'}}</span>
+			<span class="pq-inline-flex pq-border-none border-color">{{'横岗'}}<em></em>{{'荷坳'}}</span>
+			<span class="pq-inline-flex pq-border-none border-color">{{'宝安'}}<em></em>{{'福永'}}</span>
+			<span class="pq-inline-flex pq-border-none border-color">{{'宝安'}}<em></em>{{'沙井'}}</span>
+		</div>
+	</div>
+
+</ion-content>
+<div *ngIf="m_bMarkShow" class="pq-mark-all"></div>

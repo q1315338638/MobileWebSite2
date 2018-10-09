@@ -1,0 +1,47 @@
+<div class="pq-modal-mask" (click)="dismiss()"></div>
+<div class="pq-modal-content {{m_objThemeService.colorTheme()}}">
+	<div class="pq-mrdc-header pq-flex">
+		<span>{{m_sRoomTypeName}}</span>
+		<div class="pq-mrdc-header-close">
+			<button ion-button icon-only color="light" (click)="dismiss()">
+				<ion-icon name="close"></ion-icon>
+			</button>
+		</div>
+	</div>
+	<div class="pq-mrdc-main">
+		<div class="pq-slide-bar">
+			<ion-slides pager loop="true" autoplay="3000" speed="500">
+				<ion-slide>
+					<img src="assets/imgs/slide-img/banner3.png" alt="">
+				</ion-slide>
+			</ion-slides>
+		</div>
+		<div class="pq-mrdcm-roomInfo pq-flex">
+			<!-- <p class="pq-flex" padding-left><span>面积:</span> {{m_lsRoomDescription.AreaRemark}}</p>
+			<p class="pq-flex"><span>床型:</span> {{m_lsRoomDescription.BedRemark}}</p>
+			<p class="pq-flex" padding-left><span>窗户:</span> {{m_lsRoomDescription.WindowRemark}}</p>
+			<p class="pq-flex"><span>卫浴:</span> {{m_lsRoomDescription.BathroomRemark}}</p> -->
+		</div>
+		<div class="pq-refund-rule">
+			<p class="pq-refund-rule-title">退款规则</p>
+			<div class="pq-refund-rule-msg">
+				<div class="pq-refund-rule-msg-icon">
+					<ion-icon name="ios-alert-outline" color="{{m_objThemeService.colorTheme()}}"></ion-icon>
+				</div>
+				<div class="pq-refund-rule-msg-txt">
+					限时取消!&nbsp;&nbsp;&nbsp;入住前一天18点前可免费取消，逾期不可取消或变更，如未入住，酒店将扣除全额房款。
+				</div>
+				<ion-input></ion-input>
+			</div>
+		</div>
+	</div>
+	<div class="pq-book-bar">
+		<div class="pq-book-bar-price pq-flex">
+			<p *ngIf="m_objContextService.isLogin()" class="pq-flex"><em class="font-color">{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}{{m_nMebPrice | number:'1.2-2'}}</em><b>{{m_sMebPriceName}}</b></p>
+			<p *ngIf="!m_objContextService.isLogin()" class="pq-flex"><em class="font-color">{{m_nDefaultPrice | number:'1.2-2'}}</em><b>门市价</b></p>
+		</div>
+		<div class="pq-book-bar-btn">
+			<button ion-button (click)="goSubmitOrder()" class="background color-white">预订</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,18 @@
+<ion-header *ngIf="m_objContextService.m_isWeiXin" class="{{m_objThemeService.colorTheme()}}">
+	<ion-navbar>
+		<ion-icon name="arrow-back" class="icon-back" (click)="m_objNavCtrl.pop()"></ion-icon>
+		<ion-title>修改姓名</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="{{m_objThemeService.colorTheme()}} pq-bg-light-white">
+	<ion-list class="pq-mb0">
+		<ion-item class="border-color">
+			<ion-label stacked>姓名：</ion-label>
+			<ion-input type="text" [(ngModel)]="m_objPersonMember.MebName"></ion-input>
+		</ion-item>
+	</ion-list>
+	<div padding>
+		<button ion-button color="{{m_objThemeService.colorTheme()}}" block (click)="changeMebName()">确定</button>
+	</div>
+</ion-content>

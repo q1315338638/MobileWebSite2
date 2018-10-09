@@ -1,0 +1,84 @@
+
+<ion-header>
+	<ion-navbar>
+		<ion-title>我的账单</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="pq-bg-light-gray">
+	<ul class="all-info">
+		<li>
+			<p>{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}188.00</p>
+			<span>应付总额</span>
+		</li>
+		<li>
+			<p>{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}188.00</p>
+			<span>欠费总额</span>
+		</li>
+		<li>
+			<p>{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}188.00</p>
+			<span>已缴总额</span>
+		</li>
+		<li>
+			<p>{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}188.00</p>
+			<span>押金</span>
+		</li>
+	</ul>
+	<ul class="bill-month">
+		<li padding-left padding-right margin-top>
+			<h6 (click)="clickBill()">
+				6月份账单
+				<i float-right class="iconfont" [class.rotate]="m_lsjShow">&#xe636;</i>
+			</h6>
+			<ul class="bill-info-list" [class.show]="m_lsjShow">
+				<li class="head">
+					<ul class="bill-info-all">
+						<li>
+							<p>{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}188.00</p>
+							<span>应付金额</span>
+						</li>
+						<li>
+							<p>{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}188.00</p>
+							<span>已缴金额</span>
+						</li>
+
+						<li>
+							<p>{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}188.00</p>
+							<span>欠费金额</span>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<i class="iconfont">&#xe615;</i>
+					<div class="bill-month-info">
+						<p>
+							<span text-left>水费</span>
+							<span text-right>{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}34.72</span>
+						</p>
+						<em>06-29&nbsp;23:44</em>
+					</div>
+				</li>
+				<li>
+					<i class="iconfont">&#xe615;</i>
+					<div class="bill-month-info">
+						<p>
+							<span text-left>水费</span>
+							<span text-right>{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}34.72</span>
+						</p>
+						<em>06-29&nbsp;23:44</em>
+					</div>
+				</li>
+				<li>
+					<i class="iconfont">&#xe615;</i>
+					<div class="bill-month-info">
+						<p>
+							<span text-left>水费</span>
+							<span text-right>{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}34.72</span>
+						</p>
+						<em>06-29&nbsp;23:44</em>
+					</div>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</ion-content>

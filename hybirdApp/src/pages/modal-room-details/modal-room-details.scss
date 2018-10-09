@@ -1,0 +1,144 @@
+page-modal-room-details{
+    .pq-modal-content{
+        padding-bottom: rem(60);
+
+        .pq-mrdc-header{
+            width: 100%;
+            height: rem(44);
+            background-color: #f4f4f4;
+            border-bottom: 1px solid #ccc;
+            align-items: center;
+            justify-content: space-between;
+            padding-left: rem(16);
+            font-size: rem(16);
+            font-weight: 600;
+
+            .pq-mrdc-header-close{
+                width: rem(44);
+                height: 100%;
+                
+                button{
+                    width: inherit;
+                    height: inherit;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
+
+        .pq-mrdc-main{
+            width: 100%;
+
+            img{
+                width: 100%;
+                height: auto;
+            }
+
+            .pq-mrdcm-roomInfo{
+                width: 100%;
+                flex-wrap: wrap;
+                background-color: #fff;
+                border-top: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+
+                p{
+                    width: 50%;
+                    height: 1rem;
+                    align-items: center;
+                    justify-content: flex-start;
+                    font-size: rem(12);
+                    
+                    span{
+                        color: #808080;
+                        margin-right: rem(10);
+                    }
+                }
+
+                p[padding-left]{
+                    padding-left: rem(16);
+                }
+            }
+
+            .pq-refund-rule{
+                margin-top: rem(12);
+                padding: 0 rem(16);
+                font-size: rem(12);
+
+                .pq-refund-rule-msg{
+                    overflow: hidden;
+                    position: relative;
+                    padding-left: rem(30);
+                    margin-top: rem(12);
+
+                    .pq-refund-rule-msg-icon{
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: rem(26);
+                        height: rem(26);
+
+                        ion-icon{
+                            font-size: rem(26);
+                        }
+                    }
+
+                    .pq-refund-rule-msg-txt{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        .pq-book-bar{
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: rem(56);
+            background-color: #fff;
+            
+            box-shadow: 0 -1px 10px -1px #ddd;
+
+            div{
+                float: left;
+                height: 100%
+            }
+
+            .pq-book-bar-price{
+                width: 65%;
+                padding-left: rem(16);
+                align-items: center;
+                justify-content: flex-start;
+
+                p{
+                    font-size: rem(12);
+                    color: #808080;
+                    align-items: center;
+
+                    em{
+                        font-size: rem(20);
+                        color: #ffc800;
+                        margin-right: rem(10);
+                    }
+
+                    b{
+                        font-style: normal;
+                        font-size: rem(10);
+                    }
+                }
+            }
+
+            .pq-book-bar-btn{
+                width: 35%;
+
+                button{
+                    margin: 0;
+                    padding: 0;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 0;
+                    font-size: rem(16);
+                }
+            }
+        }
+    }
+}

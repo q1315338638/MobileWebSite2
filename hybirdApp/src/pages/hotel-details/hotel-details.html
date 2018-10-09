@@ -1,0 +1,141 @@
+<ion-header>
+  	<ion-navbar>
+    	<ion-title>{{m_objChainInfo.BrandName}} | {{m_objChainInfo.ChainName}}</ion-title>
+		  <ion-buttons end (click)="callPhone()">
+			  <button ion-button clear>
+			  	<i class="iconfont font-theme-color">&#xe62c;</i>
+			  </button>
+		  </ion-buttons>
+  	</ion-navbar>
+</ion-header>
+<ion-content class="{{m_objThemeService.colorTheme()}} pq-bg-light-white">
+	<div class="pq-hotel-details">
+		<!--<div class="pq-basic-information">
+			<h2 class="font-color">酒店介绍（HOTEL INTRODUCTION）</h2>
+
+		</div>-->
+		<div class="pq-hotel-facilities">
+			<h2 class="font-color">酒店设施（HOTEL FACILITIES）</h2>
+			<ul class="pq-info-box" id="general-facilities">
+				<li class="pq-info-key font-color pq-pt0 pq-pb0">酒店服务</li>
+				<li class="pq-info-value pq-flex">
+					<span *ngFor="let item of m_lsChainFacilities" class="pq-info-value-item">
+						<img src="{{m_sUrl + 'Images/MobileChainRoomService/' + item.imgUrl + '.png'}}" alt="">
+						<span>{{item.name}}</span>
+					</span>
+				</li>
+			</ul>
+			<ul class="pq-info-box">
+				<li class="pq-info-key font-color pq-pb0">房间设施</li>
+				<li class="pq-info-value pq-flex">
+					<span *ngFor="let item of m_lsRoomFacilities" class="pq-info-value-item">
+						<img src="{{m_sUrl + 'Images/MobileChainRoomService/' + item.imgUrl + '.png'}}" alt="">
+						<span>{{item.name}}</span>
+					</span>
+				</li>
+			</ul>
+		</div>
+		<div class="pq-aroud-traffic">
+			<h2 class="font-color">
+				交通周边（TRAFFIC & SURROUNDING）
+				<span float-right class="font-theme-color" (click)="goHotelMap()">
+					<i class="iconfont">&#xe61e;</i>
+					进入地图
+				</span>
+			</h2>
+			<!-- 地铁 -->
+			<ul *ngIf="m_lsSubway[0] != ''" class="pq-info-box">
+				<li class="pq-info-key font-color pq-pt0">
+					<b>●</b>
+					&nbsp;&nbsp;地铁站
+				</li>
+				<li class="pq-info-value">
+					<p class="pq-info-value-item" *ngFor="let list of m_lsSubway">{{list}}</p>
+				</li>
+			</ul>
+			<ul *ngIf="m_lsTrain[0] != ''" class="pq-info-box">
+				<li class="pq-info-key font-color">
+					<b>●</b>
+					&nbsp;&nbsp;火车站
+				</li>
+				<li class="pq-info-value">
+					<p class="pq-info-value-item" *ngFor="let list of m_lsTrain">{{list}}</p>
+				</li>
+			</ul>
+			<!-- 机场 -->
+			<ul *ngIf="m_lsAirport[0] != ''" class="pq-info-box">
+				<li class="pq-info-key font-color">
+					<b>●</b>
+					&nbsp;&nbsp;机场
+				</li>
+				<li class="pq-info-value">
+					<p class="pq-info-value-item" *ngFor="let list of m_lsAirport">{{list}}</p>
+				</li>
+			</ul>
+			<!-- 其他交通 -->
+			<ul *ngIf="m_lsOtherTraffic[0] != ''" class="pq-info-box">
+				<li class="pq-info-key font-color">
+					<b>●</b>
+					&nbsp;&nbsp;其他交通
+				</li>
+				<li class="pq-info-value">
+					<p class="pq-info-value-item" *ngFor="let list of m_lsOtherTraffic">{{list}}</p>
+				</li>
+			</ul>
+			<!-- 娱乐休闲 -->
+			<ul *ngIf="m_lsLeisure[0] != ''" class="pq-info-box">
+				<li class="pq-info-key font-color">
+					<b>●</b>
+					&nbsp;&nbsp;娱乐休闲
+				</li>
+				<li class="pq-info-value">
+					<p class="pq-info-value-item" *ngFor="let list of m_lsLeisure">{{list}}</p>
+				</li>
+			</ul>
+			<!-- 景点 -->
+			<ul *ngIf="m_lsAttractions[0] != ''" class="pq-info-box">
+				<li class="pq-info-key font-color">
+					<b>●</b>
+					&nbsp;&nbsp;周边景点
+				</li>
+				<li class="pq-info-value">
+					<p class="pq-info-value-item" *ngFor="let list of m_lsAttractions">{{list}}</p>
+				</li>
+			</ul>
+			<!-- 其他 -->
+			<ul *ngIf="m_lsOther[0] != ''" class="pq-info-box">
+				<li class="pq-info-key font-color">
+					<b>●</b>
+					&nbsp;&nbsp;其他
+				</li>
+				<li class="pq-info-value">
+					<p class="pq-info-value-item" *ngFor="let list of m_lsOther">{{list}}</p>
+				</li>
+			</ul>
+		</div>
+		<div class="pq-hotel-profile">
+			<h2 class="font-color">酒店介绍（HOTEL PROFILE）</h2>
+			<!--<ul class="pq-info-box">
+			<li class="pq-info-key font-color">联系方式</li>
+			<li class="pq-info-value">
+				<span class="pq-info-value-item">{{m_objChainInfo.Telephone}}</span>
+			</li>
+		</ul>-->
+			<ul class="pq-info-box">
+				<li class="pq-info-value">
+					<span *ngIf="m_sOpeningTime != ''" class="pq-info-value-item">开业时间&nbsp;&nbsp;&nbsp;{{m_sOpeningTime}}</span>
+					<span *ngIf="m_sRoomNumber != ''" class="pq-info-value-item">房间总数&nbsp;&nbsp;&nbsp;{{m_sRoomNumber}}</span>
+				</li>
+			</ul>
+			<!--<ul class="pq-info-box" id="address-info">
+			<li class="pq-info-key font-color">酒店地址</li>
+			<li class="pq-info-value">
+				<span class="pq-info-value-item">{{m_objChainInfo.ChainAddress}}</span>
+			</li>
+		</ul>-->
+			<div>
+				<p *ngFor="let item of m_lsChainSummary">{{item}}</p>
+			</div>
+		</div>
+	</div>
+</ion-content>

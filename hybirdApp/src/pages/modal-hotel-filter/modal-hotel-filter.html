@@ -1,0 +1,12 @@
+<div class="pq-filter-hotel-modal {{m_objThemeService.colorTheme()}}">
+    <div class="pq-modal-mask" (click)="dismiss()"></div>
+    <div class="pq-modal-content">
+        <div class="pq-filter-header pq-flex">
+            酒店筛选
+        </div>
+        <my-hotelfilter></my-hotelfilter>
+        <div class="pq-check-btn ">
+            <button ion-button block color="{{m_objThemeService.colorTheme()}}" (click)="search()">{{'查询'}}</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<ion-header *ngIf="m_objContextService.m_isWeiXin" class="{{m_objThemeService.colorTheme()}}" [ngClass]="{'header-mt':m_objContextService.m_bIsIosApp}">
+	<ion-navbar>
+		<ion-title>我的订单</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="{{m_objThemeService.colorTheme()}} pq-bg-light-white">
+	<div class="content">
+		<p padding-left padding-right class="not-login">
+			<button *ngIf="!m_objContextService.isLogin()" ion-button block (click)="goLogin()" class="background">登陆后可查看</button>
+		</p>
+		<ul *ngIf="m_objContextService.isLogin() && m_bIsShowTabs" class="deposit_type">
+			<li class="deposit_type_item selected" (click)="changeTabs(0)" [class.selected]="m_bShowTabsStyle[0]">全部</li>
+			<li class="deposit_type_item" (click)="changeTabs(1)" [class.selected]="m_bShowTabsStyle[1]">预定</li>
+			<li class="deposit_type_item" (click)="changeTabs(2)" [class.selected]="m_bShowTabsStyle[2]">离店</li>
+		</ul>
+		<div *ngIf="m_objContextService.isLogin()" [ngSwitch]="m_nShowTabs" id="OrderList" [ngClass]="{'mt58':!m_bIsShowTabs}">
+			<div *ngSwitchCase="'0'">
+				<ul class="orderList">
+					<li class="orderItem" *ngFor="let list of m_lsOrderList">
+						<div class="orderItem_title background" [ngStyle]="{'background-color':(list.FolioState == 4 || list.FolioState == 1) ? '#666' : ''}">
+							<p class="hotel_name">{{list.ChainName}}</p>
+							<p class="live_time">
+								<span>{{list.ArrAccDate.toString().replace("T00:00:00","")}}</span>
+								入住
+								<span>{{list.DepAccDate.toString().replace("T00:00:00","")}}</span>
+								离店
+								<span>共<em>{{list.NightCount}}</em>晚</span>
+							</p>
+						</div>
+						<div class="orderItem_content">
+							<p class="hotel_address">{{list.ChainAddr}}</p>
+							<p class="folio_id">订单号：<em class="folio_id_txt font-color">{{list.FolioID}}</em></p>
+							<p class="folio_state flex_box">
+								<span>订单状态：<em class="folio_state_txt font-color">{{parseStateText(list.FolioState, list.PayTransState)}}</em></span>
+								<span>费用：<em class="folio_price">{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}{{list.RoomRate * list.NightCount * list.RoomCount | number:'0.2-2'}}</em></span>
+							</p>
+							<div class="btn_list flex_box">
+								<div class="delete_folio flex_box" *ngIf="list.FolioState == 1 || list.FolioState == 2 || list.FolioState == 4" (click)="delMebFolio(list.ChainID,list.FolioID,0)"><p>删除订单</p></div>
+								<div class="check_folio flex_box" (click)="goDetails(list.FolioID)"><p>查看订单</p></div>
+								<div class="comment_folio flex_box background" *ngIf="(list.FolioState+1)==5" (click)="goCommentHotel(list)"><p>评论订单</p></div>
+								<div class="to_pay flex_box background" *ngIf="list.PayTransState != 3 && list.FolioState==0" (click)="goPay(list.FolioID)"><p>立即支付</p></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<p class="empty_show" *ngIf="m_bHaveMoreData">暂无更多记录</p>
+				<ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite(0))" *ngIf="!m_bHaveMoreData">
+					<ion-infinite-scroll-content></ion-infinite-scroll-content>
+				</ion-infinite-scroll>
+			</div>
+			<div *ngSwitchCase="'1'">
+				<ul class="orderList">
+					<li class="orderItem" *ngFor="let list of m_lsBookOrderList.DataSet">
+						<div class="orderItem_title background">
+							<p class="hotel_name">{{list.ChainName}}</p>
+							<p class="live_time">
+								<span>{{list.ArrAccDate.toString().replace("T00:00:00","")}}</span>
+								入住
+								<span>{{list.DepAccDate.toString().replace("T00:00:00","")}}</span>
+								离店
+								<span>共<em>{{list.NightCount}}</em>晚</span>
+							</p>
+						</div>
+						<div class="orderItem_content">
+							<p class="hotel_address">{{list.ChainAddr}}</p>
+							<p class="folio_id">订单号：<em class="folio_id_txt font-color">{{list.FolioID}}</em></p>
+							<p class="folio_state flex_box">
+								<span>订单状态：<em class="folio_state_txt font-color">{{parseStateText(list.FolioState, list.PayTransState)}}</em></span>
+								<span>费用：<em class="folio_price">{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}{{list.RoomRate * list.NightCount * list.RoomCount | number:'0.2-2'}}</em></span>
+							</p>
+							<div class="btn_list flex_box">
+								<div class="delete_folio flex_box" *ngIf="list.FolioState == 1 || list.FolioState == 2 || list.FolioState == 4" (click)="delMebFolio(list.ChainID,list.FolioID,1)"><p>删除订单</p></div>
+								<div class="check_folio flex_box" (click)="goDetails(list.FolioID)"><p>查看订单</p></div>
+								<div class="comment_folio flex_box background" *ngIf="(list.FolioState+1)==5" (click)="goCommentHotel(list)"><p>评论订单</p></div>
+								<div class="to_pay flex_box background" *ngIf="list.PayTransState != 3 && list.FolioState==0" (click)="goPay(list.FolioID)"><p>立即支付</p></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<p class="empty_show" *ngIf="m_bBookHaveMoreData">暂无更多记录</p>
+				<ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite(1))" *ngIf="!m_bBookHaveMoreData" id="BookScroll">
+					<ion-infinite-scroll-content></ion-infinite-scroll-content>
+				</ion-infinite-scroll>
+			</div>
+			<div *ngSwitchCase="'2'">
+				<ul class="orderList">
+					<li class="orderItem" *ngFor="let list of m_lsDepartureOrderList">
+						<div class="orderItem_title background" style="background:#666 !important;">
+							<p class="hotel_name">{{list.ChainName}}</p>
+							<p class="live_time">
+								<span>{{list.ArrAccDate.toString().replace("T00:00:00","")}}</span>
+								入住
+								<span>{{list.DepAccDate.toString().replace("T00:00:00","")}}</span>
+								离店
+								<span>共<em>{{list.NightCount}}</em>晚</span>
+							</p>
+						</div>
+						<div class="orderItem_content">
+							<p class="hotel_address">{{list.ChainAddr}}</p>
+							<p class="folio_id">订单号：<em class="folio_id_txt font-color">{{list.FolioID}}</em></p>
+							<p class="folio_state flex_box">
+								<span>订单状态：<em class="folio_state_txt font-color">{{parseStateText(list.FolioState, list.PayTransState)}}</em></span>
+								<span>费用：<em class="folio_price">{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}{{list.RoomRate * list.NightCount * list.RoomCount | number:'0.2-2'}}</em></span>
+							</p>
+							<div class="btn_list flex_box">
+								<div class="delete_folio flex_box" *ngIf="list.FolioState == 1 || list.FolioState == 2 || list.FolioState == 4" (click)="delMebFolio(list.ChainID,list.FolioID,5)"><p>删除订单</p></div>
+								<div class="check_folio flex_box" (click)="goDetails(list.FolioID)"><p>查看订单</p></div>
+								<div class="comment_folio flex_box background" *ngIf="(list.FolioState+1)==5 && !list.bCommented" (click)="goCommentHotel(list)"><p>评论订单</p></div>
+								<div class="to_pay flex_box background" *ngIf="list.PayTransState != 3 && list.FolioState==0" (click)="goPay(list.FolioID)"><p>立即支付</p></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<p class="empty_show" *ngIf="m_bDepartureHaveMoreData">暂无更多记录</p>
+				<ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite(2))" *ngIf="!m_bDepartureHaveMoreData">
+					<ion-infinite-scroll-content></ion-infinite-scroll-content>
+				</ion-infinite-scroll>
+			</div>
+		</div>
+	</div>
+</ion-content>

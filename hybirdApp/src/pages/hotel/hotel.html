@@ -1,0 +1,106 @@
+<ion-header *ngIf="m_objContextService.m_isWeiXin">
+    <ion-navbar>
+        <ion-title>{{m_sBrandName}} | {{m_sChainName}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="{{m_objThemeService.colorTheme()}} pq-bg-light-white">
+    <div class="pq-hotel-slide-bar">
+		<ion-slides pager loop="true" autoplay="3000" speed="500">
+			<ion-slide>
+				<img src="assets/imgs/slide-img/banner1.png" alt="">
+			</ion-slide>
+			<ion-slide>
+				<img src="assets/imgs/slide-img/banner2.png" alt="">
+			</ion-slide>
+			<ion-slide>
+				<img src="assets/imgs/slide-img/banner3.png" alt="">
+			</ion-slide>
+		</ion-slides>
+    </div>
+	<div class="pq-hotel-info-list">
+		<div class="pq-hotel-info-item pq-flex" (click)="goHotelComment()">
+			<div class="pq-hotel-info-msg pq-flex">
+				<span class="comment-score font-theme-color">{{m_nCommentScore}}</span>分
+				<div class="star-box  font-theme-color">
+					<div class="star-top" [ngStyle]="{'width':m_nStarNumber + '%'}">
+						<i class="iconfont">&#xe60a;</i>
+						<i class="iconfont">&#xe60a;</i>
+						<i class="iconfont">&#xe60a;</i>
+						<i class="iconfont">&#xe60a;</i>
+						<i class="iconfont">&#xe60a;</i>
+					</div>
+					<div class="star-bottom">
+						<i class="iconfont">&#xe60a;</i>
+						<i class="iconfont">&#xe60a;</i>
+						<i class="iconfont">&#xe60a;</i>
+						<i class="iconfont">&#xe60a;</i>
+						<i class="iconfont">&#xe60a;</i>
+					</div>
+				</div>
+			</div>
+			<div class="pq-hotel-info-btn pq-flex font-theme-color">
+				查看{{m_nCommentCount}}条评论
+				<i class="iconfont">&#xe636;</i>
+			</div>
+		</div>
+		<div class="pq-hotel-info-item pq-flex" (click)="goHotelMap()">
+			<div class="pq-hotel-info-msg pq-flex">
+				{{m_sAddress}}
+			</div>
+			<div class="pq-hotel-info-btn pq-flex font-theme-color">
+				地图
+				<i class="iconfont">&#xe636;</i>
+			</div>
+		</div>
+		<div class="pq-hotel-info-item pq-flex" (click)="goHotelDetails()">
+			<div class="pq-hotel-info-msg pq-flex">
+				<img src="{{m_sApiUrl + 'Images/MobileChainRoomService/' + item.Remark + '.png'}}" alt="" *ngFor="let item of m_objChainRoomServiceInfo">
+			</div>
+			<div class="pq-hotel-info-btn pq-flex font-theme-color">
+				设施
+				<i class="iconfont">&#xe636;</i>
+			</div>
+		</div>
+
+	</div>
+    <div class="pq-gray-split"></div>
+    <div class="pq-date-picker" (click)="goDatePicker()">
+        <div class="check_in pq-flex">
+			<p>入住</p>
+			<p class="time font-color">{{m_objMyDateService.m_objDate.checkInDate._date}}</p>
+		</div>
+		<div class="date_num pq-flex">
+			<div class="num_box pq-flex">
+				<span class="hotel_dayNum">共{{m_objMyDateService.m_objDate.dayCount}}晚</span>
+			</div>
+		</div>
+		<div class="check_out pq-flex">
+			<p>离店</p>
+			<p class="time font-color">{{m_objMyDateService.m_objDate.checkOutDate._date}}</p>
+		</div>
+		<div class="line"></div>
+    </div>
+    <div class="pq-gray-split"></div>
+    <div class="pq-roomType">
+        <div class="pq-roomType-item pq-flex" *ngFor="let item of m_objRoomTypes; let i = index">
+            <div class="pq-roomType-item-msg" (click)="openRoomDetails(item.RoomTypeID,i,item.RoomTypeName)">
+                <img src="assets/imgs/hotel-img/{{m_nHotelId}}/room/room-img/{{item.RoomTypeID}}.jpg" alt="">
+                <div class="pq-room-info pq-flex">
+                    <p class="pq-roomTypeName">{{item.RoomTypeName}}</p>
+                    <p class="pq-defaultPrice"><span>{{item.RetailPrice}}</span><span>(门市价)</span></p>
+					<p *ngIf="m_objContextService.isLogin()" class="font-theme-color">
+						{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}<span class="member-price">{{item.MebRoomRate}}</span>
+						<span>专属会员价</span>
+					</p>
+                    <p *ngIf="!m_objContextService.isLogin()" class="font-theme-color">登录查看专属会员价</p>
+                </div>
+            </div>
+            <div class="pq-roomType-item-btn">
+                <div class="pq-room-btn">
+                    <button ion-button (click)="goSubmitOrder(item.RoomTypeID,item.RoomTypeName,item.AccDate)" class="color-white background">预订</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

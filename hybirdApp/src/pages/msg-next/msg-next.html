@@ -1,0 +1,29 @@
+<ion-header *ngIf="m_objContextService.m_isWeiXin">
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="{{m_objThemeService.colorTheme()}} pq-bg-light-white">
+    <h1 padding>{{m_sTitle}}</h1>
+	<ion-list>
+		<ion-item *ngIf="m_bIsShowMebName" padding-right class="pq-item-ios pq-border-top-no">
+			<ion-label>姓名</ion-label>
+			<ion-input type="text" [(ngModel)]="m_objMebInfo.mebName" (keyup)="verification()" placeholder="请输入您的姓名"></ion-input>
+			<button ion-button clear color="dark" item-end class="pq-mr-no" (click)="ChooseSex()" [disabled]="m_bSMSButton">{{m_objMebInfo.sexName}}</button>
+		</ion-item>
+		<ion-item padding-right class="pq-item-ios pq-border-top-no">
+			<ion-label fixed>密码</ion-label>
+			<ion-input [type]="m_sPasswordType" clearInput="true" [(ngModel)]="m_objMebInfo.password" (keyup)="verification()" placeholder="请输入您的密码"></ion-input>
+			<button ion-button icon-only clear color="dark" item-end *ngIf="!m_bEye" (click)="toggleShowTextPassword()">
+				<ion-icon name="eye"></ion-icon>
+			</button>
+			<button ion-button icon-only clear color="dark" item-end *ngIf="m_bEye" (click)="toggleShowTextPassword()">
+				<ion-icon name="eye-off"></ion-icon>
+			</button>
+		</ion-item>
+		<div padding>
+			<button *ngIf="m_bIsShowMebName" ion-button class="background" block (click)="register()" [disabled]="m_bRegister">确定</button>
+			<button *ngIf="!m_bIsShowMebName" ion-button class="background" block (click)="resetLoginPassword()" [disabled]="m_bRegister">确定</button>
+		</div>
+	</ion-list>
+</ion-content>

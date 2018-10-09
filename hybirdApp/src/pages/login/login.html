@@ -1,0 +1,35 @@
+<ion-header *ngIf="m_objContextService.m_isWeiXin">
+    <ion-navbar>
+        <ion-title>会员登录</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="pq-bg-light-gray {{m_objThemeService.colorTheme()}}">
+	<div class="bg">
+		<img src="assets/theme/{{m_objThemeService.imgTheme()}}/login-logo.png" alt="" />
+	</div>
+	<ion-list> 
+		<ion-item no-lines class="pq-item-ios">
+			<ion-label fixed>{{'登录账号[DengLuZhangHao]' | i18n}}</ion-label>
+			<ion-input type="text" clearInput="true" [(ngModel)]="m_objAccount.mobile" name="username" placeholder="{{'姓名/手机号/身份账号[ShuRuZhangHao]' | i18n}}"></ion-input>
+		</ion-item>
+		<ion-item no-lines class="pq-item-ios">
+			<ion-label fixed>{{'登录密码[DengLuMiMa]' | i18n}}</ion-label>
+			<ion-input type="password" clearInput="true" [(ngModel)]="m_objAccount.password" name="password" placeholder="{{'请输入登录密码[ShuRuMiMa]' | i18n}}"></ion-input>
+		</ion-item>
+		<div padding-left padding-right pq-margin (click)="goMsgLogin()">
+			<img pq-default float-left src="assets/theme/{{m_objThemeService.imgTheme()}}/msg.png" />
+			<span>{{'短信登录[DuanXinDengLu]' | i18n}}</span>
+		</div>
+		<div padding-left padding-right>
+			<button ion-button class="background" block (click)="login()">{{'登录[DengLu]' | i18n}}</button>
+		</div>
+		<div padding-left padding-right pq-margin overflow-hidden>
+			<span float-left class="pq-color-black" (click)="mebRegister()">{{'注册[ZhuCe]' | i18n}}</span>
+			<span float-right class="pq-color-black" (click)="forgetPassword()">{{'忘记密码[WangJiMiMa]' | i18n}}</span>
+		</div>
+	</ion-list>
+	<div padding class="pq-flex pq-flex-center">
+		<img pq-default src="assets/theme/{{m_objThemeService.imgTheme()}}/gift.png" />
+		<span>{{'登录享受更多会员优惠[DengLuXiangShou]' | i18n}}</span>
+	</div>
+</ion-content>

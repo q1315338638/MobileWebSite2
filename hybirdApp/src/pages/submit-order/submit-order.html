@@ -1,0 +1,90 @@
+<ion-header *ngIf="m_objContextService.m_isWeiXin">
+    <ion-navbar>
+        <ion-title text-center>提交订单</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="pq-bg-light-gray {{m_objThemeService.colorTheme()}}">
+    <div class="pq-bg-light-white">
+        <h6 padding>{{m_sBrandName}}&nbsp;&nbsp;|&nbsp;&nbsp;{{m_sChainName}}</h6>
+        <div padding class="date-and-address pq-pt0">
+            <p class="pq-flex">
+                <img pq-small src="assets/imgs/calendar.png"/>
+                入住
+                <b>{{m_objMyDateService.m_objDate.checkInDate._date}}</b>
+                离店
+                <b>{{m_objMyDateService.m_objDate.checkOutDate._date}}</b>
+                共
+                <strong>{{m_objMyDateService.m_objDate.dayCount}}</strong>
+                晚
+                <em class="pq-inline-flex font-color" (click)="goDatePicker()">修改</em>
+            </p>
+            <p class="pq-flex">
+                <img pq-small src="../../assets/imgs/location.png"/>
+                <span white-space-nowrap>{{m_sChainAddress}}</span>
+            </p>
+        </div>
+    </div>
+    <ion-list>
+        <ion-item (click)="chooseNumber()" class="roomTypeName">
+            <ion-note item-start>{{m_sroomTypeName}}</ion-note>
+            {{m_nRoomsNumber}}间
+            <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+        </ion-item>
+        <ion-item text-center>
+            预订人信息
+        </ion-item>
+        <ion-item>
+            <ion-label><em must>*</em>预订人</ion-label>
+            <ion-input placeholder="请输入预定人姓名" [(ngModel)]="m_objMsg.sName"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label><em must>*</em>联系方式</ion-label>
+            <ion-input type="tel" placeholder="请输入手机号" [(ngModel)]="m_objMsg.sMobile"></ion-input>
+            <button ion-button item-end class="pq-min-width" color="{{m_objThemeService.colorTheme()}}" maxlength="11" (click)="getVerificationCode()" [disabled]="m_bSMSButton">{{m_sSMSText}}</button>
+        </ion-item>
+        <ion-item>
+            <ion-label><em must>*</em>验证码</ion-label>
+            <ion-input type="tel" placeholder="请输入验证码" maxlength="4" [(ngModel)]="m_objMsg.sCode"></ion-input>
+        </ion-item>
+        <ion-item text-center>
+            入住人信息
+        </ion-item>
+        <div class="checkInItem pq-flex" *ngFor="let item of m_lstAddGuestFolio; let i = index">
+            <div><em must *ngIf="i==0">*</em>入住人</div>
+            <div class="pq-flex">
+                <ion-input placeholder="入住人姓名" [(ngModel)]="item.name"></ion-input>
+                <ion-input placeholder="联系方式"  [(ngModel)]="item.phone"></ion-input>
+            </div>
+        </div>
+        <ion-item (click)="addMeb()">
+            <div class="pq-flex addMeb font-theme-color">
+                <ion-icon name="md-add"></ion-icon>
+                <span>添加入住人</span>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-label>备注</ion-label>
+            <ion-input placeholder="无"></ion-input>
+        </ion-item>
+    </ion-list>
+    <div padding class="book-description">
+        <b>预订说明</b>
+        <p>1、本次微信预订将为您保留至入住当天18:00。</p>
+		<p>2、预定房费订单将为您整晚保留，不可取消不可退款。</p>
+		<p>3、酒店通常14:00办理入住，提前抵店可能需要等待。</p>
+		<p>4、如需在0:00-06:00时入住，入住日期请选择前一天。</p>
+		<p>5、如需修改订单请取消订单并重新下单，或致电各店前台。</p>
+		<p>6、根据法律法规所有入住人都需要实名登记（包括姓名、证件类型与证件号码）。</p>
+    </div>
+</ion-content>
+
+<ion-footer class="footer">
+    <ion-toolbar>
+        <ion-list no-lines class="pq-mb0">
+            <ion-item class="pq-pr0">
+                <ion-label>合计<b>{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}{{m_nMebPrice * m_nRoomsNumber * m_objMyDateService.m_objDate.dayCount}}</b></ion-label>
+                <button ion-button item-end class="pq-bottom-button"  color="{{m_objThemeService.colorTheme()}}" (click)="bookIn()">提交订单</button>
+            </ion-item>
+        </ion-list>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,31 @@
+<div class="pq-filter-price-modal {{m_objThemeService.colorTheme()}}">
+    <div class="pq-modal-mask" (click)="dismiss()"></div>
+    <div class="pq-modal-content">
+        <div class="pq-filter-header pq-flex">
+            价格筛选
+        </div>
+        <div class="pq-filter-main">
+            <ul class="filter-price-list pq-flex">
+                <li class="pq-flex" [ngClass]="{'filter-price-selected':m_objHotelInfoService.m_lsSelectedIndex==0}" (click)="selectPriceRange(0)">不限价格</li>
+                <li *ngFor="let item of m_lsPriceRange, let i = index" class="pq-flex" [ngClass]="{'filter-price-selected':m_objHotelInfoService.m_lsSelectedIndex==i+1}" (click)="selectPriceRange(i+1)">
+                    <span>{{m_lsPriceRange[i]}}</span>
+                    <span *ngIf="i!=m_lsPriceRange.length-1" class="filter-price-li-margin">-</span>
+                    <span *ngIf="i==m_lsPriceRange.length-1" class="filter-price-li-margin">≥</span>
+                    <span>{{m_lsPriceRange[i+1]}}</span>
+                </li>
+            </ul>
+            <div class="price-range pq-flex">
+                <div>
+                    <input type="number" placeholder="最小" [(ngModel)]="m_objHotelInfoService.m_nMinPrice">
+                </div>
+                <span class="line"></span>
+                <div>
+                    <input type="number" placeholder="最大" [(ngModel)]="m_objHotelInfoService.m_nMaxPrice">
+                </div>
+                <div>
+                    <button ion-button (click)="hotelFilterByPrice()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

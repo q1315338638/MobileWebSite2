@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="telephone=no" name="format-detection">
+    <title>订单支付</title>
+    <link rel="stylesheet" type="text/css" href="public.css" />
+    <link rel="stylesheet" href="order.css" />
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+</head>
+<body>
+    <div class="pagef">
+        <div class="order-pay-box">
+            <p class="order-price-info" id="order-price-info">支付金额：<span class="order-price" id="amountMoney">￥0.00</span></p>
+            <span class="order-pay-btn" onclick="Pay();" id="order-pay-affirm">确认支付</span>
+            <span class="order-result-btn" id="backtovip" onclick="gotoOrderCenter()">返回订单中心</span>
+        </div>
+    </div>
+</body>
+</html> 
+<script src="qutil.js"></script>
+<script src="/Pay/WeiXinPay.js"></script>
+<script>
+
+    $(function () {
+        dataStr = decodeURIComponent(GetQueryString('data'));
+        nFolieID = JSON.parse(dataStr).nFolieID;
+        data = JSON.parse(JSON.parse(dataStr).PostForm);
+        $('#amountMoney').text("¥" + (data.payAmount / 100));
+    })
+	  
+	 
+	 
+	
+    function Pay() {
+        try {
+ 
+      if (data == null || data == undefined || data.appId == undefined)
+            alert("参数错误");
+      callpay(data.appId, data.timeStamp, data.nonceStr, data.package.split('=')[1], data.paySign, nFolieID);
+        } catch (e) {
+            alert("参数错误 /callpay调用错误");
+        }
+    }
+
+	function gotoOrderCenter(){
+		//返回订单列表
+		location.href='/test/order.html';
+		}
+
+</script>

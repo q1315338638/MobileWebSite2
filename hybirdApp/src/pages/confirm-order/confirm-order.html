@@ -1,0 +1,102 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title text-center>确认订单</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="pq-bg-light-gray">
+    <div border-bottom class="pq-bg-light-white pq-mb8">
+        <h6 padding>订单信息</h6>
+        <div class="item-list">
+            <p border-top padding-left padding-right class="block">
+                <label>入住酒店</label>
+                <span item-end white-space-nowrap>星愉时尚连锁酒店┃湛江遂溪湛川路店湛</span>
+            </p>
+            <p padding-left padding-right>
+                <label>入住房型</label>
+                <span item-end white-space-nowrap>时尚双床房</span>
+                <label>房间数量</label>
+                <span item-end>1间</span>
+            </p>
+            <p border-top padding-left padding-right>
+                <label>入住日期</label>
+                <span item-end>2018-06-10</span>
+                <label>离店日期</label>
+                <span item-end>2018-06-10</span>
+            </p>
+        </div>
+    </div>
+    <div border-bottom class="pq-bg-light-white pq-mb8">
+        <div class="item-list">
+            <p padding-left padding-right>
+                <label>入住人</label>
+                <span item-end white-space-nowrap>周杰伦</span>
+                <label>联系方式</label>
+                <span item-end>13266804548</span>
+            </p>
+            <p border-top padding-left padding-right class="block">
+                <label>备注</label>
+                <span item-end white-space-nowrap></span>
+            </p>
+        </div>
+    </div>
+    <div border-bottom class="pq-bg-light-white pq-mb8">
+        <div class="item-list">
+            <p padding-left padding-right>
+                <label>订单编号</label>
+                <span item-end white-space-nowrap>1820</span>
+                <label>订单状态</label>
+                <span item-end>预定</span>
+            </p>
+            <p border-top padding-left padding-right class="block">
+                <label>下单时间</label>
+                <span item-end white-space-nowrap>2018-06-23 23:55:00</span>
+            </p>
+        </div>
+    </div>
+    <div border-bottom class="pq-bg-light-white pq-mb8">
+        <div class="item-list">
+            <p padding-left padding-right class="block">
+                <label>支付类型</label>
+                <span item-end>前台支付</span>
+            </p>
+            <p border-top padding-left padding-right class="block">
+                <label>订单金额</label>
+				<span item-end>{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}129</span>
+            </p>
+            <p border-top padding-left padding-right class="block">
+                <label>优惠券</label>
+                <span item-end>0</span>
+            </p>
+            <p border-top padding-left padding-right class="block">
+                <label>使用储值</label>
+                <span item-end>0</span>
+            </p>
+            <p border-top padding-left padding-right class="block">
+                <label>实付金额</label>
+				<span item-end>{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}129</span>
+            </p>
+            <p border-top padding-left padding-right class="block">
+                <label>支付状态</label>
+                <span item-end>未支付</span>
+            </p>
+        </div>
+    </div>
+    <div border-bottom class="pq-bg-light-white pq-mb8">
+        <div class="item-list">
+            <p padding-left padding-right class="block">
+                <label>酒店地址</label>
+                <span item-end white-space-nowrap>广东省遂溪县遂城镇湛川路南51号</span>
+            </p>
+            <p border-top padding-left padding-right class="block">
+                <label>酒店电话</label>
+                <span item-end white-space-nowrap>0759-7602777/0759-7602999</span>
+            </p>
+        </div>
+    </div>
+</ion-content>
+<ion-footer class="footer">
+    <ion-toolbar>
+        <button class="pq-bg-light-black">取消</button>
+        <button class="{{m_objThemeService.colorTheme()}}" (click)="goOrderDetails()">确认订单</button>
+    </ion-toolbar>
+</ion-footer>

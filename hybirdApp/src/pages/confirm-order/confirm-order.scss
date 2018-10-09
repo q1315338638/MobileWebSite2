@@ -1,0 +1,39 @@
+page-confirm-order {
+    h6 {
+        font-weight: bold;
+    }
+
+    .item-list {
+        p {
+            padding: rem(7) 0;
+            display: flex;
+            display: -webkit-flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+
+            &.block {
+                span {
+                    width: 80%;
+                }
+            }
+
+            label {
+                width: 20%;
+                color: $labelColor;
+            }
+
+            span {
+                width: 30%;
+            }
+        }
+    }
+
+    ion-footer {
+        .toolbar-ios, .toolbar-md {
+            button {
+                float: left;
+                width: 50% !important;
+            }
+        }
+    }
+}

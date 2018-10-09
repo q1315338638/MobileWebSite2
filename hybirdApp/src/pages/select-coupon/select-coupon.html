@@ -1,0 +1,47 @@
+<ion-header *ngIf="m_objContextService.m_isWeiXin" class="{{m_objThemeService.colorTheme()}}">
+	<ion-toolbar>
+		<ion-buttons srart>
+			<button ion-button icon-only (click)="dismiss()">
+				<ion-icon name="arrow-back"></ion-icon>
+			</button>
+		</ion-buttons>
+		<ion-buttons end>
+			<button *ngIf="!m_bHaveCoupon" ion-button class="background enter" (click)="back()">确定</button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+<ion-content>
+	<div class="page {{m_objThemeService.colorTheme()}}">
+		<ion-scroll scrollY="true">
+			<div class="select-coupon-content">
+				<div class="notUseCoupon pq-flex" (click)="notUseCoupon()">
+					<span>不使用优惠券</span>
+				</div>
+				<div *ngIf="!m_bHaveCoupon" class="couponTips pq-flex">
+					<span>本订单可使用优惠券</span>
+					<span>{{m_nMaxAmount}}张</span>
+				</div>
+				<div class="couponItem">
+					<ul *ngFor="let list of m_lsCouponsEffective, let i = index" (click)="selectCoupon(list.Code,i,list.Value)">
+						<li relative>
+							<img src="../../assets/theme/{{m_objThemeService.imgTheme()}}/coupon-bg-use.png" />
+							<span class="dscounted-price">立减<b>{{list.Value}}</b>元</span>
+							<div>
+								<p>{{list.Code}}</p>
+								<span>
+									<b><i></i>{{list.Value}}</b>
+								</span>
+								<p>有效期至&nbsp;{{list.EndDate.split('T')[0]}}</p>
+							</div>
+							<span class="dscounted-type">现金券</span>
+							<span class="select-icon pq-inline-flex">
+								<ion-icon name="md-checkmark-circle" [ngClass]="{'icon-actived':m_lsSelectedList[i]}"></ion-icon>
+							</span>
+						</li>
+					</ul>
+				</div>
+				<p *ngIf="m_bHaveCoupon" text-center padding>暂时没有任何优惠券哦</p>
+			</div>
+		</ion-scroll>
+	</div>
+</ion-content>

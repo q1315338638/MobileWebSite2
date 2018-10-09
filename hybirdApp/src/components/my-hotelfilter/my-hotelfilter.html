@@ -1,0 +1,62 @@
+<div class="pq-checkbox">
+    <div [ngStyle]="{'display':m_lsFunction[0] ? 'flex' : 'none'}" class="pq-location pq-flex">
+        <div class="pq-select-city pq-inline-flex" (click)="goCityPicker()">
+            <img src="assets/imgs/city.png" alt="">
+            <span>{{m_objGetLocationService.m_sSelectedCity}}</span>
+            <input type="hidden" id="baiduLocation">
+        </div>
+        <div class="pq-arrow-right pq-pos-abs-center">
+            <img src="assets/imgs/arrow-right.png" alt="" class="pq-pos-abs-center">
+        </div>
+		<div class="pq-location-city pq-inline-flex" (click)="getLocation()">
+			<ion-icon name="md-locate"></ion-icon>
+			{{'定位城市[DingWeiChengShi]' | i18n}}
+		</div>
+    </div>
+    <div class="pq-datePicker" (click)="goDatePicker()">
+        <div class="pq-pos-abs pq-flex">
+            <img src="assets/imgs/calendar.png" alt="" class="pq-dp-img-left">
+        </div>
+        <div class="pq-dp-content pq-flex">
+			<div>{{'日期[RiQi]' | i18n}}</div>
+            <div class="pq-dp-content-main pq-flex">
+                <div class="pq-dp-content-main-date pq-flex">
+                    <span class="pq-date-day">{{m_objMyDateService.m_objDate.checkInDate.day}}</span>
+                    <span class="pq-inline-flex">
+                        <em class="pq-dp-week">{{m_objMyDateService.m_objDate.checkInDate.week}}</em><em class="pq-dp-mon">{{m_objMyDateService.m_objDate.checkInDate.mon}}</em>
+                    </span>
+                </div>
+                <div class="pq-datePicker-split"></div>
+                <div class="pq-dp-content-main-date pq-flex">
+                    <span class="pq-date-day">{{m_objMyDateService.m_objDate.checkOutDate.day}}</span>
+                    <span class="pq-inline-flex">
+                        <em class="pq-dp-week">{{m_objMyDateService.m_objDate.checkOutDate.week}}</em><em class="pq-dp-mon">{{m_objMyDateService.m_objDate.checkOutDate.mon}}</em>
+                    </span>
+                </div>
+            </div>
+			<div><em>{{m_objMyDateService.m_objDate.dayCount}}</em>{{'晚[Wan]' | i18n}}</div>
+        </div>
+        <div class="pq-pos-abs pq-flex">
+            <img src="assets/imgs/arrow-right.png" alt="" class="pq-dp-img-right">
+        </div>
+    </div>
+    <div *ngIf="m_lsFunction[1]" class="pq-searchBox">
+        <div class="pq-pos-abs pq-flex">
+            <img src="assets/imgs/search.png" alt="" class="pq-dp-img-left">
+        </div>
+        <div class="pq-searchBox-main">
+            <input type="text" placeholder="{{'关键字/商圈/酒店[KeyWord]' | i18n}}" (keyup)="onKey($event)" [(ngModel)]="m_objContextService.m_sSearchTag">
+        </div>
+        <div class="pq-pos-abs pq-flex">
+            <img src="assets/imgs/arrow-right.png" alt="" class="pq-dp-img-right">
+        </div>
+    </div>
+    <div class="pq-flex pq-flex-center rent">
+        <span>长租</span>
+        <span>
+            <a></a>
+            <i></i>
+        </span>
+    </div>
+</div>
+

@@ -1,0 +1,36 @@
+<ion-header color="primary" *ngIf="m_objContextService.m_isWeiXin">
+    <ion-navbar>
+        <ion-title>cityPicker</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="pq-bgc-light-gray">
+    <div class="pq-cityPicker-main">
+        <ion-searchbar
+            [(ngModel)]="myInput"
+            [showCancelButton]="shouldShowCancel"
+            (ionInput)="onInput($event)"
+            (ionCancel)="onCancel($event)"
+            placeholder="搜索">
+        </ion-searchbar>
+        <ion-list no-lines class="pq-margin-zero">
+            <button ion-item (click)="selectCity('全部',0)">
+              {{ '全部' }}
+            </button>
+        </ion-list>
+        <ion-list no-lines class="pq-margin-zero current-city">
+            <ion-item>
+                <div>当前城市：<em (click)="selectCity(m_objlocationService.m_sCurrentCity,m_objlocationService.m_nCityNo)">{{m_objlocationService.m_sCurrentCity}}</em></div>
+                <ion-icon class="reflesh-location" name="md-locate" item-end (click)="locationRefresh()"></ion-icon>
+                <input type="hidden" id="baiduLocation">
+            </ion-item>
+        </ion-list>
+        <ion-item-group class="pq-margin-zero" *ngFor="let item of m_lsFormatedDataList">
+            <ion-item-divider color="light"  id={{item.firstLetter}}>{{item.firstLetter}}</ion-item-divider>
+            <ion-item *ngFor="let list of item.arr" (click)="selectCity(list.CityName,list.CityID)">{{list.CityName}}</ion-item>
+        </ion-item-group>
+    </div>
+    <div class="pq-cityPicker-slide pq-flex">
+        <p class="pq-flex" *ngFor="let item of this.m_lsFormatedDataList; let i = index" (click)="scrollMoveTo(i)">{{item.firstLetter}}</p>
+    </div>
+    <div class="pq-cityPicker-toast" [ngClass]='{isShow:m_bToastShow}'>{{m_sToastLetter}}</div>
+</ion-content>

@@ -1,0 +1,31 @@
+<ion-header *ngIf="m_objContextService.m_isWeiXin" class="{{m_objThemeService.colorTheme()}}">
+  <ion-navbar>
+    <ion-title>设置</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="{{m_objThemeService.colorTheme()}} pq-bg-light-gray" padding-top>
+	<ion-list *ngIf="m_lsFunctionList[0]" (click)="changeColor()" class="list-ios">
+		<a ion-item>{{'主题[ZhuTi]' | i18n}}</a>
+	</ion-list>
+	<ion-list *ngIf="m_lsFunctionList[1]" (click)="changeLanguage()" class="list-ios">
+		<a ion-item>{{'语言[YuYan]' | i18n}}</a>
+	</ion-list>
+	<ion-list *ngIf="m_lsFunctionList[2]" class="list-ios">
+		<a ion-item>{{'用户说明[YongHuShuoMing]' | i18n}}</a>
+	</ion-list>
+	<ion-list *ngIf="m_lsFunctionList[3]" (click)="goLegalNotices()" class="list-ios">
+		<a ion-item>{{'法律声明[FaLvShengMing]' | i18n}}</a>
+	</ion-list>
+	<ion-list *ngIf="m_lsFunctionList[4]" (click)="goCopyright()" class="list-ios">
+		<a ion-item>{{'版权信息[BanQuanXinXi]' | i18n}}</a>
+	</ion-list>
+	<ion-list *ngIf="m_lsFunctionList[5]" class="list-ios">
+		<a ion-item>
+			{{'服务电话[FuWuDianHua]' | i18n}}
+			<em float-right>{{m_objContextService.m_objCompanyInfo.Phone}}</em>
+		</a>
+	</ion-list>
+	<ion-list *ngIf="m_objContextService.isLogin()" margin-top class="list-ios">
+		<a ion-item (click)="loginOFF()">{{'退出登录[TuiChuDengLu]' | i18n}}</a>
+	</ion-list>
+</ion-content>

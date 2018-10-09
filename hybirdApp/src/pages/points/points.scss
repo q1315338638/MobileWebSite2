@@ -1,0 +1,132 @@
+page-points {
+    .flex_box {
+        display: -webkit-flex; /* Safari */
+        display: flex;
+        align-items: center;
+    }
+
+    .deposit_type {
+        width: 100%;
+        height: 1rem;
+        background-color: #fff;
+        margin-bottom: 5px;
+    }
+
+    .selected {
+        background-color: #fff !important;
+        border-bottom: 2px solid;
+    }
+
+    .deposit_type li {
+        width: 50%;
+        height: 100%;
+        float: left;
+        text-align: center;
+        line-height: 1rem;
+    }
+
+    .deposit_title {
+        width: 100%;
+        overflow: hidden;
+        background-color: #fff;
+        margin-bottom: 5px;
+    }
+
+    .deposit_title > li {
+        width: 100%;
+        height: 1rem;
+        border-bottom: 1px solid #ededed;
+    }
+
+    .deposit_title > li ul li {
+        height: 100%;
+        float: left;
+        text-align: center;
+        line-height: 1rem;
+    }
+
+    .li-3 {
+        width: 33.33%;
+    }
+
+    .li-4 {
+        width: 25%;
+    }
+
+    .deposit_title_value {
+        color: #000;
+    }
+
+    .deposit_list {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .deposit_item {
+        width: 100%;
+        overflow: hidden;
+        background-color: #fff;
+        padding: 0 0.375rem;
+    }
+
+    .deposit_item:not(:last-child) {
+        border-bottom: 1px solid #ededed;
+    }
+
+    .deposit_item ul {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .deposit_item ul li {
+        width: 100%;
+        height: 0.7rem;
+        line-height: 0.6rem;
+        font-size: rem(12);
+        overflow: hidden;
+        display: flex;
+        display: -webkit-flex;
+        align-items: center;
+        color: #808080;
+    }
+
+    .deposit_item_title, .deposit_item_info {
+        height: 100%;
+        overflow: hidden;
+        justify-content: space-between;
+    }
+
+    .deposit_item span em {
+        color: #000;
+    }
+
+    .present_deposit span {
+        width: 50%;
+        display: inline-flex;
+        display: -webkit-inline-flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .present_deposit span:first-child {
+        padding-right: 0.5rem;
+    }
+
+    .present_deposit span:last-child {
+        padding-left: 0.5rem;
+    }
+
+    .empty_show {
+        display: block;
+        text-align: center;
+        color: #000;
+        font-size: rem(12);
+        line-height: rem(40);
+    }
+
+    .loadMore {
+        text-align: center;
+        color: #000;
+        display: none;
+    }
+}

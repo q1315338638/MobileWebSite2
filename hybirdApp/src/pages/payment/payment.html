@@ -1,0 +1,96 @@
+<ion-header *ngIf="m_objContextService.m_isWeiXin">
+    <ion-navbar>
+        <ion-title>支付订单</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="pq-bg-light-gray">
+    <div border-bottom class="pq-bg-light-white pq-mb8">
+        <div class="item-list">
+            <div class="list">
+                <label>订单总价</label>
+				<span item-end white-space-nowrap class="price">{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}{{(m_nRoomRate * m_nRoomCount * m_nNightCount) | number:'1.2-2'}}</span>
+            </div>
+        </div>
+    </div>
+    <div border-bottom class="pq-bg-light-white pq-mb8">
+        <div class="item-list">
+            <div class="list">
+                <label>优惠券</label>
+                <span item-end white-space-nowrap (click)="goCouponPage()">
+                    <em float-left class="discountAmount" *ngIf="m_objContextService.m_nDiscountAmount > 0">
+                        -{{m_objContextService.m_nDiscountAmount | number:'1.2-2'}}
+                    </em>
+                    <span *ngIf="!(m_objContextService.m_nDiscountAmount > 0)" float-left>选择优惠券</span>
+                    <img *ngIf="!(m_objContextService.m_nDiscountAmount > 0)" float-left src="assets/theme/{{m_objThemeService.imgTheme()}}/arrow-down.png" />
+                </span>
+            </div>
+        </div>
+    </div>
+    <div border-bottom class="pq-bg-light-white pq-mb8">
+        <div class="item-list">
+            <div class="list">
+                <label>实付金额</label>
+				<span item-end white-space-nowrap class="price">{{m_objThemeService.m_objTheme.CountrySomeInfo.CurrencySymbol}}{{m_nAmount | number:'1.2-2'}}</span>
+            </div>
+            <div class="payTypeBox">
+                <div class="pay-type-title">支付方式</div>
+                <ul class="pay-type-list pq-flex">
+                    <li *ngIf="m_lsFunctionList[0]" class="pq-flex" >
+                        <div class="pq-flex" (click)="choosePayType(0)">
+                            <img src="assets/theme/{{m_objThemeService.imgTheme()}}/wechat-pay.png" alt="">
+                            <span class="pq-inline-flex">
+                                <em>微信支付</em>
+                                <b></b>
+                            </span>
+                            <div class="pq-flex">
+                                <ion-icon name="md-checkmark-circle" color="{{m_objThemeService.colorTheme()}}" *ngIf="m_lsPayType==0"></ion-icon>
+                            </div>
+                        </div>
+                    </li>
+                    <li *ngIf="m_lsFunctionList[1]" class="pq-flex">
+                        <div class="pq-flex" (click)="choosePayType(1)">
+                            <img src="assets/theme/{{m_objThemeService.imgTheme()}}/money.png" alt="">
+                            <span class="pq-inline-flex"> 
+                                <em>储值支付</em>
+                                <b></b>
+                            </span>
+                            <div class="pq-flex">
+                                <ion-icon name="md-checkmark-circle" color="{{m_objThemeService.colorTheme()}}" *ngIf="m_lsPayType==1"></ion-icon>
+                            </div>
+                        </div>
+                    </li>
+                    <li *ngIf="m_lsFunctionList[2]" class="pq-flex">
+                        <div class="pq-flex" (click)="choosePayType(2)">
+                            <img src="assets/theme/{{m_objThemeService.imgTheme()}}/wallet.png" alt="">
+                            <span class="pq-inline-flex">
+                                <em>前台支付</em>
+                                <b></b>
+                            </span>
+                            <div class="pq-flex">
+                                <ion-icon name="md-checkmark-circle" color="{{m_objThemeService.colorTheme()}}" *ngIf="m_lsPayType==2"></ion-icon>
+                            </div>
+                        </div>
+                    </li>
+                    <li *ngIf="m_lsFunctionList[3]" class="pq-flex">
+                        <div class="pq-flex" (click)="choosePayType(3)">
+                            <img src="assets/theme/{{m_objThemeService.imgTheme()}}/wallet.png" alt="">
+                            <span class="pq-inline-flex">
+                                <em>第三方支付</em>
+                                <b></b>
+                            </span>
+                            <div class="pq-flex">
+                                <ion-icon name="md-checkmark-circle" color="{{m_objThemeService.colorTheme()}}" *ngIf="m_lsPayType==3"></ion-icon>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</ion-content>
+<ion-footer class="footer">
+    <ion-toolbar>
+        <button ion-button color="{{m_objThemeService.colorTheme()}}" (click)="toPay()">确认支付</button>
+    </ion-toolbar>
+</ion-footer>
+

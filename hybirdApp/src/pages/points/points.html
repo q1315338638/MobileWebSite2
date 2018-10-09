@@ -1,0 +1,93 @@
+
+<ion-header *ngIf="m_objContextService.m_isWeiXin" class="{{m_objThemeService.colorTheme()}}">
+    <ion-navbar>
+        <ion-title>会员积分</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="{{m_objThemeService.colorTheme()}} pq-bg-light-white">
+    <div class="content">
+        <ul class="deposit_type">
+            <li class="deposit_type_item selected" (click)="changeTabs(0)" [class.selected]="m_bShowTabsStyle[0]">积分获取</li>
+            <li class="deposit_type_item" (click)="changeTabs(1)" [class.selected]="m_bShowTabsStyle[1]">积分使用</li>
+        </ul>
+        <div [ngSwitch]="m_nShowTabs">
+            <div *ngSwitchCase="'0'">
+                <ul class="deposit_title">
+                    <li class="deposit_title_key">
+                        <ul>
+                            <li class="li-4">赠送总额</li>
+                            <li class="li-4">使用总额</li>
+                            <li class="li-4">过期总额</li>
+                            <li class="li-4">积分余额</li>
+                        </ul>
+                    </li>
+                    <li class="deposit_title_value">
+                        <ul>
+                            <li class="li-4">{{m_objPointGatherInfo.PointGainSum}}</li>
+                            <li class="li-4">{{m_objPointGatherInfo.PointUsedSum}}</li>
+                            <li class="li-4">{{m_objPointGatherInfo.PointExpireSum}}</li>
+                            <li class="li-4">{{m_objPointGatherInfo.PointResidueSum}}</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="deposit_list">
+                    <li class="deposit_item" *ngFor="let list of m_lsGainPointList.DataSet">
+                        <ul>
+                            <li class="deposit_item_title">
+                                <span>获取酒店：<em>{{list.ChainName}}</em></span>
+                                <span>获取时间：<em>{{(list.CreateTime.replace('T', " ")).substring(0, list.CreateTime.length - 3)}}</em></span>
+                            </li>
+                            <li class="deposit_item_info">
+                                <span>获取数量：<em>{{list.Point}}</em></span>
+                                <span>过期时间：<em>{{(list.ExpireTime.replace('T', " ")).substring(0, list.ExpireTime.length - 3)}}</em></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="empty_show" *ngIf="m_nGainPointHaveMoreData">暂无更多记录</p>
+                <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfiniteForGainPoint())" *ngIf="!m_nGainPointHaveMoreData">
+                    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+                </ion-infinite-scroll>
+            </div>
+            <div *ngSwitchCase="'1'">
+                <ul class="deposit_title">
+                    <li class="deposit_title_key">
+                        <ul>
+                            <li class="li-4">赠送总额</li>
+                            <li class="li-4">使用总额</li>
+                            <li class="li-4">过期总额</li>
+                            <li class="li-4">积分余额</li>
+                        </ul>
+                    </li>
+                    <li class="deposit_title_value">
+                        <ul>
+                            <li class="li-4">{{m_objPointGatherInfo.PointGainSum}}</li>
+                            <li class="li-4">{{m_objPointGatherInfo.PointUsedSum}}</li>
+                            <li class="li-4">{{m_objPointGatherInfo.PointExpireSum}}</li>
+                            <li class="li-4">{{m_objPointGatherInfo.PointResidueSum}}</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="deposit_list">
+                    <li class="deposit_item" *ngFor="let list of m_lsUsedPointList.DataSet">
+                        <ul>
+                            <li class="deposit_item_title">
+                                <span>消费酒店：<em>{{list.ChainName}}</em></span>
+                            </li>
+                            <li class="deposit_item_info">
+                                <span>消费方式：<em>{{list.TypeName}}</em></span>
+                                <span>数量：<em>{{list.Point}}</em></span>
+                                <span>时间：<em>{{(list.CreateTime.replace('T', " ")).substring(0, list.CreateTime.length - 3)}}</em></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="empty_show" *ngIf="m_nUsedPointHaveMoreData">暂无更多记录</p>
+                <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())" *ngIf="!m_nUsedPointHaveMoreData">
+                    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+                </ion-infinite-scroll>
+            </div>
+        </div>
+    </div>
+</ion-content>

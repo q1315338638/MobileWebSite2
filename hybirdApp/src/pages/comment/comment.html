@@ -1,0 +1,82 @@
+<ion-header *ngIf="m_objContextService.m_isWeiXin" class="{{m_objThemeService.colorTheme()}}">
+  <ion-navbar>
+    <ion-title>订单评论</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="{{m_objThemeService.colorTheme()}} pq-bg-light-gray">
+	<div class="page">
+		<div class="points-box flex-box">
+			<div class="points-title">整体评分</div>
+			<ul class="starPoints">
+				<li>
+					<i class="iconfont" [class.choose-color]="m_objStarState.chooseStar[0]" (click)="chooseStar(1)">&#xe60a;</i>
+				</li>
+				<li>
+					<i class="iconfont" [class.choose-color]="m_objStarState.chooseStar[1]" (click)="chooseStar(2)">&#xe60a;</i>
+				</li>
+				<li>
+					<i class="iconfont" [class.choose-color]="m_objStarState.chooseStar[2]" (click)="chooseStar(3)">&#xe60a;</i>
+				</li>
+				<li>
+					<i class="iconfont" [class.choose-color]="m_objStarState.chooseStar[3]" (click)="chooseStar(4)">&#xe60a;</i>
+				</li>
+				<li>
+					<i class="iconfont" [class.choose-color]="m_objStarState.chooseStar[4]" (click)="chooseStar(5)">&#xe60a;</i>
+				</li>
+			</ul>
+			<div id="points-name">{{m_objStarState.title}}</div>
+		</div>
+		<!-- 单号 -->
+		<input type="hidden" value="" name="FolioID" id="FolioID">
+		<!-- 酒店ID -->
+		<input type="hidden" value="" name="KeyId" id="KeyId">
+		<!-- 评分 -->
+		<input type="hidden" value="" name="Score" id="Score">
+		<div class="content-box">
+			<ul class="order-info">
+				<li class="flex-box" id="room-name">{{m_objOrderDetails.RoomTypeName}}</li>
+				<li class="flex-box">
+					<span class="info-key">酒店名称</span><span class="info-value">{{m_objOrderDetails.ChainName}}</span>
+				</li>
+				<li class="flex-box">
+					<span class="info-key">预定时间</span><span class="info-value">{{m_objOrderDetails.CreateTime}}</span>
+				</li>
+				<li class="flex-box">
+					<div class="flex-box">
+						<span class="info-key">入住日期</span><span class="info-value">{{m_objOrderDetails.ArrAccDate.toString().replace("T00:00:00","")}}</span>
+					</div>
+					<div class="flex-box">
+						<span class="info-key">离店日期</span><span class="info-value">{{m_objOrderDetails.DepAccDate.toString().replace("T00:00:00","")}}</span>
+					</div>
+				</li>
+			</ul>
+			<div class="comment-text">
+				<textarea name="Comment" id="Comment" placeholder="亲，入住后感觉如何？快来点评酒店的环境、服务、客房等情况吧~" [(ngModel)]="m_objComment.Comment"></textarea>
+				<div class="flex-box">
+					<span id="cur-time"></span>
+				</div>
+			</div>
+		</div>
+				<div class="picture-box flex-box">
+					<div class="img-box">
+						<div class="comment-img" *ngIf="m_sImgUrl != ''">
+							<i (click)="delImg()"></i>
+							<img src="{{m_sImgUrl}}" alt="">
+						</div>
+					</div>
+					<div class="choose-img">
+						<img src="assets/imgs/upload-img.png" alt="">
+
+						<form id="form">
+							<input type="file" accept="image/png, image/jpeg, image/gif, image/jpg" (change)="showImg()" id="showImg" name="img">
+						</form>
+					</div>
+				</div>
+
+			<div class="publish-box flex-box background" (click)="commentHotel()">
+				发表评价
+			</div>
+	</div>
+</ion-content>

@@ -1,0 +1,61 @@
+.pq-date-week-title {
+    width: 100%;
+    height: rem(50);
+
+    .pq-date-week-item{
+        width: 14.285%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    // .pq-date-week-item:first-child,
+    // .pq-date-week-item:last-child{
+    //     color: #ffc800;
+    // }
+}
+.pq-date-content{
+    width: 100%;
+    overflow: hidden;
+
+    .pq-date-item{
+        width: 100%;
+        overflow: hidden;
+
+        .pq-date-mon{
+            width: 100%;
+            height: rem(50);
+            font-size: rem(16);
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            align-items: center;
+            justify-content: center;
+            background-color: #fbfbfb;
+        }
+
+        .pq-date-day{
+            width: 100%;
+            overflow: hidden;
+            flex-wrap: wrap;
+
+            span{
+                width: 14.285%;
+                height: rem(66);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                font-size: rem(16);
+                color: #ddd;
+                border-radius: 2px;
+
+                em{
+                    margin-top: 4px;
+                }
+            }
+
+            .pq-canSelected{
+                color: #000;
+            }
+        }
+    }
+}
