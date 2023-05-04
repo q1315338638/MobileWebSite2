@@ -1,0 +1,294 @@
+@import './variable.scss';
+
+// 定义内外边距，历遍1-80
+@for $i from 0 through 80 {
+
+  // 只要双数和能被5除尽的数
+  @if $i % 2==0 or $i % 5==0 {
+
+    // 得出：margin-30或者m-30
+    .m-#{$i} {
+      margin: $i + rpx;
+    }
+
+    // 得出：padding-30或者p-30
+    .p-#{$i} {
+      padding: $i + rpx;
+    }
+
+    // 定义上下外边距
+    .m-tb-#{$i} {
+      margin-top: $i + rpx;
+      margin-bottom: $i + rpx;
+    }
+
+    .m-t-#{$i} {
+      margin-top: $i + rpx;
+    }
+
+    .m-b-#{$i} {
+      margin-bottom: $i + rpx;
+    }
+
+    // 定义左右外边距
+    .m-lr-#{$i} {
+      margin-left: $i + rpx;
+      margin-right: $i + rpx;
+    }
+
+    .m-l-#{$i} {
+      margin-left: $i + rpx;
+    }
+
+    .m-r-#{$i} {
+      margin-right: $i + rpx;
+    }
+
+    // 定义上下内边距
+    .p-tb-#{$i} {
+      padding-top: $i + rpx;
+      padding-bottom: $i + rpx;
+    }
+
+    .p-t-#{$i} {
+      padding-top: $i + rpx;
+    }
+
+    .p-b-#{$i} {
+      padding-bottom: $i + rpx;
+    }
+
+    // 定义左右内边距
+    .p-lr-#{$i} {
+      padding-left: $i + rpx;
+      padding-right: $i + rpx;
+    }
+
+    .p-l-#{$i} {
+      padding-left: $i + rpx;
+    }
+
+    .p-r-#{$i} {
+      padding-right: $i + rpx;
+    }
+
+    .font-#{$i} {
+      font-size: $i + rpx;
+    }
+
+    .line-height-#{$i} {
+      line-height: $i + rpx;
+    }
+
+    @each $short,
+    $long in l left,
+    t top,
+    r right,
+    b bottom {
+
+      // 缩写版，结果如： m-l-30
+      // 定义外边距
+      .m-#{$short}-#{$i} {
+        margin-#{$long}: $i + rpx;
+      }
+
+      // 定义内边距
+      .p-#{$short}-#{$i} {
+        padding-#{$long}: $i + rpx;
+      }
+
+      // 完整版，结果如：margin-left-30
+      // 定义外边距
+      .margin-#{$long}-#{$i} {
+        margin-#{$long}: $i + rpx;
+      }
+
+      // 定义内边距
+      .padding-#{$long}-#{$i} {
+        padding-#{$long}: $i + rpx;
+      }
+    }
+  }
+}
+
+// 自动左外边距
+.m-l-auto {
+  margin-left: auto;
+}
+
+// 自动右外边距
+.m-r-auto {
+  margin-right: auto;
+}
+
+.page-p-lr {
+  padding: 0 $pagePadding;
+}
+
+.page-p-l {
+  padding-left: $pagePadding;
+}
+
+.page-p-r {
+  padding-right: $pagePadding;
+}
+
+.page-m-lr {
+  margin: $pagePadding;
+}
+
+.page-m-l {
+  margin-left: $pagePadding;
+}
+
+.page-m-r {
+  margin-right: $pagePadding;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+
+  &-start {
+    display: flex;
+    align-items: start;
+    justify-content: flex-start;
+  }
+
+  &-center {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    &-start {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+  }
+
+  &-end {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-col {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  &-wrap {
+    flex-wrap: wrap;
+  }
+
+  &-nowrap {
+    flex-wrap: nowrap;
+  }
+
+  &-unset {
+    flex-direction: unset !important;
+  }
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.color {
+  &-type-title {
+    color: #999999;
+  }
+
+  &-type-info {
+    color: #999999;
+  }
+
+  &-red {
+    color: #E31010;
+  }
+
+  &-green {
+    color: #0B9712;
+  }
+
+  &-yellow {
+    color: #ECC73F;
+  }
+
+  &-white {
+    color: #fff;
+  }
+
+  &-theme {
+    color: $colorTheme;
+  }
+}
+
+.background {
+  &-red {
+    background: #E31010;
+  }
+
+  &-green {
+    background: #0B9712;
+  }
+
+  &-yellow {
+    background: #ECC73F;
+  }
+}
+
+.border-radius {
+  border-radius: 10rpx;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+//对齐
+@each $var in (left, center, right) {
+  .text-#{$var} {
+    text-align: $var;
+  }
+}
+
+@for $i from 1 through 5 {
+  .line-#{$i} {
+
+    // vue下，单行和多行显示省略号需要单独处理
+    @if $i ==1 {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    @else {
+      display: -webkit-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-all;
+      -webkit-line-clamp: $i;
+      -webkit-box-orient: vertical;
+    }
+  }
+}
+
+page {
+  background: #F7F7F7;
+}
+
+// .main-color {
+//   color: $main-color;
+// }
